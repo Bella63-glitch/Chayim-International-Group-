@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en"> 
- <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Chayim International Group</title> <!-- Google Fonts for improved typography --> 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chayim International Group</title>
+  <!-- Google Fonts for improved typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
     body { font-family:'Roboto', sans-serif; background:#fff; color:#333; }
@@ -131,46 +132,52 @@
     .about-card h3, #about h2 {
       color: #8B4513;
     }
-  </style> 
- </head> 
- <body> 
-  <header> 
-   <div class="logo-title"> 
-    <img src="https://i.postimg.cc/J7H4C1fC/IMG-20250405-001030.png" alt="Logo"> 
-   </div> 
-   <nav> <a href="#about">About Us</a> <a href="#featured">Featured</a> <a href="#propertyListings">Property Listings</a> 
-   </nav> 
-  </header> 
-  <div class="slideshow"> 
-   <div class="slide" style="background-image:url('https://i.postimg.cc/yW20JHRx/0b30aba482d289418f887076b8ecae94.jpg')"></div> 
-   <div class="slide" style="background-image:url('https://i.postimg.cc/wRRJWWC9/142f1a63af6078b007a712e41ecfc52e.jpg')"></div> 
-   <div class="slide" style="background-image:url('https://i.postimg.cc/dkxrjMSW/646c8cd5c6c7e3b3d0bbae3356d647a6.jpg')"></div> 
-   <div class="overlay">
-    Chayim International Group
-   </div> 
-  </div> 
-  <div class="container" id="about"> 
-   <h2>About Us</h2> 
-   <div class="about-cards"> 
-    <div class="about-card"> 
-     <h3>Our Mission</h3> 
-     <p>To connect people with exceptional properties while delivering trust, transparency, and transformation in real estate.</p> 
-    </div> 
-    <div class="about-card"> 
-     <h3>Our Vision</h3> 
-     <p>To become a leading real estate partner known for excellence, innovation, and integrity across local and global markets.</p> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="container" id="featured"> 
-   <h2>Featured Properties</h2> 
-   <div class="listings" id="propertyListings">
-     Loading properties… 
-   </div> 
-  </div> 
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="https://i.postimg.cc/J7H4C1fC/IMG-20250405-001030.png" alt="Logo">
+    </div>
+    <nav>
+      <a href="#about">About Us</a>
+      <a href="#featured">Featured</a>
+      <a href="property-listings.html">Property Listings</a> <!-- Correct link here -->
+    </nav>
+  </header>
+
+  <div class="slideshow">
+    <div class="slide" style="background-image:url('https://i.postimg.cc/yW20JHRx/0b30aba482d289418f887076b8ecae94.jpg')"></div>
+    <div class="slide" style="background-image:url('https://i.postimg.cc/wRRJWWC9/142f1a63af6078b007a712e41ecfc52e.jpg')"></div>
+    <div class="slide" style="background-image:url('https://i.postimg.cc/dkxrjMSW/646c8cd5c6c7e3b3d0bbae3356d647a6.jpg')"></div>
+    <div class="overlay">Chayim International Group</div>
+  </div>
+
+  <div class="container" id="about">
+    <h2>About Us</h2>
+    <div class="about-cards">
+      <div class="about-card">
+        <h3>Our Mission</h3>
+        <p>To connect people with exceptional properties while delivering trust, transparency, and transformation in real estate.</p>
+      </div>
+      <div class="about-card">
+        <h3>Our Vision</h3>
+        <p>To become a leading real estate partner known for excellence, innovation, and integrity across local and global markets.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="featured">
+    <h2>Featured Properties</h2>
+    <div class="listings" id="propertyListings">
+      Loading properties…
+    </div>
+  </div>
+
   <footer>
-    © 2025 Chayim International Group | All Rights Reserved 
-  </footer> 
+    © 2025 Chayim International Group | All Rights Reserved
+  </footer>
+
   <script>
     const APP_ID   = "43FDF951-CA7C-4AA1-8CE5-EAEFE8AABBBB";
     const REST_KEY = "D816E27F-267C-45B1-9932-AE452537BA0E";
@@ -199,7 +206,7 @@
             <h3>${p.title || "No Title"}</h3>
             <p>Price: Ksh ${p.price || "N/A"}</p>
             <p>Location: ${p.location || "Unknown"}</p>
-            <a class="btn" href="listings.html">View All Listings</a>
+            <a class="btn" href="property-listings.html">View All Listings</a> <!-- Correct link here -->
           </div>
         `;
         container.appendChild(card);
@@ -221,6 +228,7 @@
 
       cards.forEach(card => observer.observe(card));
     });
-  </script> 
- </body>
+  </script>
+</body>
 </html>
+
