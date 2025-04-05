@@ -1,31 +1,102 @@
 <!doctype html>
 <html lang="en"> 
-<head> 
+ <head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Chayim International Group</title> 
+  <title>Chayim International Group</title> <!-- Google Fonts for improved typography --> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"> 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI', sans-serif; background:#fff; color:#333; }
-    header { background:#8B4513; color:#fff; padding:20px; text-align:center; }
-    nav {
-      background:#fff; border-bottom:1px solid #ddd;
-      display:flex; justify-content:center; gap:20px;
-      padding:10px 0;
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+    body { font-family:'Roboto', sans-serif; background:#fff; color:#333; }
+
+    header {
+      background:#8B4513; color:#fff;
+      display:flex; align-items:center;
+      justify-content:space-between;
+      padding:10px 20px;
     }
+    header img {
+      height:50px; width:50px; border-radius:50%; margin-right:10px;
+    }
+    .logo-title {
+      display:flex; align-items:center;
+      font-size:1.2em; font-weight:bold;
+      font-family: 'Poppins', sans-serif;
+    }
+
     nav a {
-      color:#8B4513; text-decoration:none; font-weight:bold;
-      padding:5px 10px; border-radius:4px;
+      color:#fff; text-decoration:none; margin-left:15px;
+      font-weight:bold;
+      font-family: 'Poppins', sans-serif;
     }
-    nav a:hover { background:rgba(139,69,19,0.1); }
-    .hero {
-      background:url('https://via.placeholder.com/1200x400/8B4513/ffffff?text=Chayim+International+Group')
-        center/cover no-repeat;
-      height:300px; display:flex; align-items:center; justify-content:center;
-      color:#fff; text-shadow:1px1px5px rgba(0,0,0,0.6);
-      font-size:2em; font-weight:bold;
+    nav a:hover { text-decoration:underline; }
+
+    .slideshow {
+      position:relative;
+      height:300px;
+      overflow:hidden;
     }
+    .slide {
+      position:absolute; width:100%; height:100%;
+      background-size:cover; background-position:center;
+      animation: fade 15s infinite;
+    }
+    .slide:nth-child(2) { animation-delay:5s; }
+    .slide:nth-child(3) { animation-delay:10s; }
+
+    .overlay {
+      position:absolute; top:20%; left:0; right:0; bottom:20%;
+      background:rgba(0,0,0,0.6); /* dark overlay */
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:2.5em; font-weight:bold;
+      text-align:center;
+      padding:20px;
+      width:100%;
+      animation: fadeInScale 2s ease-out;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes fade {
+      0% {opacity:1;}
+      33% {opacity:0;}
+      66% {opacity:0;}
+      100% {opacity:1;}
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     .container { max-width:1100px; margin:30px auto; padding:0 20px; }
+
+    #about {
+      text-align:center; margin:40px 0;
+    }
+    .about-cards {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:20px;
+      margin-top:20px;
+    }
+    .about-card {
+      background:#f8f8f8; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      padding:20px; width:300px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+      font-family: 'Roboto', sans-serif;
+    }
+    .about-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .listings {
       display:flex; overflow-x:auto; gap:20px; padding-bottom:10px;
     }
@@ -40,6 +111,7 @@
     .property-info { padding:15px; }
     .property-info h3 {
       font-size:1.1em; margin-bottom:10px; color:#8B4513;
+      font-family: 'Poppins', sans-serif;
     }
     .property-info p { margin-bottom:8px; font-size:.9em; }
     .property-info .btn {
@@ -49,38 +121,56 @@
       font-size:.9em;
     }
     .property-info .btn:hover { background:#a0522d; }
+
     footer {
       background:#8B4513; color:#fff; text-align:center;
       padding:15px; margin-top:40px;
     }
+
+    /* Updated brown color for the headers */
+    .about-card h3, #about h2 {
+      color: #8B4513;
+    }
   </style> 
-</head> 
-<body> 
-
+ </head> 
+ <body> 
   <header> 
-    <h1>Chayim International Group</h1> 
-    <p>Your Trusted Partner in Property</p> 
+   <div class="logo-title"> 
+    <img src="https://i.postimg.cc/J7H4C1fC/IMG-20250405-001030.png" alt="Logo"> 
+   </div> 
+   <nav> <a href="#about">About Us</a> <a href="#featured">Featured</a> <a href="#propertyListings">Property Listings</a> 
+   </nav> 
   </header> 
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="listings.html">Property Listings</a>
-    <a href="about.html">About Us</a>
-  </nav>
-
-  <section class="hero">Discover Exceptional Properties</section> 
-
-  <div class="container">
-    <h2>Featured Properties</h2>
-    <div class="listings" id="propertyListings">
-      Loading properties…
-    </div>
+  <div class="slideshow"> 
+   <div class="slide" style="background-image:url('https://i.postimg.cc/yW20JHRx/0b30aba482d289418f887076b8ecae94.jpg')"></div> 
+   <div class="slide" style="background-image:url('https://i.postimg.cc/wRRJWWC9/142f1a63af6078b007a712e41ecfc52e.jpg')"></div> 
+   <div class="slide" style="background-image:url('https://i.postimg.cc/dkxrjMSW/646c8cd5c6c7e3b3d0bbae3356d647a6.jpg')"></div> 
+   <div class="overlay">
+    Chayim International Group
+   </div> 
   </div> 
-
+  <div class="container" id="about"> 
+   <h2>About Us</h2> 
+   <div class="about-cards"> 
+    <div class="about-card"> 
+     <h3>Our Mission</h3> 
+     <p>To connect people with exceptional properties while delivering trust, transparency, and transformation in real estate.</p> 
+    </div> 
+    <div class="about-card"> 
+     <h3>Our Vision</h3> 
+     <p>To become a leading real estate partner known for excellence, innovation, and integrity across local and global markets.</p> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="container" id="featured"> 
+   <h2>Featured Properties</h2> 
+   <div class="listings" id="propertyListings">
+     Loading properties… 
+   </div> 
+  </div> 
   <footer>
-    © 2025 Chayim International Group | All Rights Reserved
+    © 2025 Chayim International Group | All Rights Reserved 
   </footer> 
-
   <script>
     const APP_ID   = "43FDF951-CA7C-4AA1-8CE5-EAEFE8AABBBB";
     const REST_KEY = "D816E27F-267C-45B1-9932-AE452537BA0E";
@@ -88,14 +178,12 @@
 
     async function loadProperties() {
       try {
-        // get 6 most recent
         const res = await fetch(`${API_URL}?pageSize=6&sortBy=created DESC`);
         const props = await res.json();
         displayProperties(props);
       } catch (err) {
         console.error(err);
-        document.getElementById("propertyListings")
-          .innerText = "Failed to load properties.";
+        document.getElementById("propertyListings").innerText = "Failed to load properties.";
       }
     }
 
@@ -118,7 +206,21 @@
       });
     }
 
-    window.addEventListener("DOMContentLoaded", loadProperties);
-  </script>
-</body>
+    window.addEventListener("DOMContentLoaded", () => {
+      loadProperties();
+
+      // About cards scroll animation
+      const cards = document.querySelectorAll('.about-card');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      cards.forEach(card => observer.observe(card));
+    });
+  </script> 
+ </body>
 </html>
