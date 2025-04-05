@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Property Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-brown: #8B4513;
+      --brand-white: #FFFFFF;
+    }
+    body {
+      background: var(--brand-white);
+      color: var(--brand-brown);
+    }
+    .navbar {
+      background: var(--brand-brown);
+    }
+    .navbar .navbar-brand,
+    .btn-brown {
+      color: var(--brand-white) !important;
+    }
+    .btn-brown {
+      background: var(--brand-brown);
+      border: none;
+    }
+    .btn-brown:hover {
+      background: #6A2F0C;
+    }
+    .detail-img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--brand-brown);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="listings.html">← Back to Listings</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="detailContainer" class="row gy-4">
+      <!-- details get injected here -->
+    </div>
+  </div>
+
+  <!-- Bootstrap & Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const APP_ID       = '43FDF951-CA7C-4AA1-8CE5-EAEFE8AABBBB';
+    const REST_API_KEY = 'D816E27F-267C-45B1-9932-AE452537BA0E';
+    const BASE_URL     = `https://api.backendless.com/${APP_ID}/${REST_API_KEY}/data/Properties`;
+
+    function getIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+
+    async function loadDetails() {
+      const id = getIdFromUrl();
+      if (!id) return alert('No property ID provided.');
+
+      try {
+        const res  = await fetch(`${BASE_URL}/${id}`);
+        if (!res.ok) throw new Error(await res.text());
+        const p    = await res.json();
+        renderDetails(p);
+      } catch (e) {
+        console.error(e);
+        alert('Could not load property details.');
+      }
+    }
+
+    function renderDetails(p) {
+      const container = document.getElementById('detailContainer');
+      container.innerHTML = `
+        <div class="col-md-6">
+          ${p.imageurl ? `<img src="${p.imageurl}" class="detail-img" alt="${p.title}">` : ''}
+        </div>
+        <div class="col-md-6">
+          <h2>${p.title || 'Untitled'}</h2>
+          <p class="text-muted"><strong>Category:</strong> ${p.category || '—'}</p>
+          <p class="text-muted"><strong>Location:</strong> ${p.location || '—'}</p>
+          <p class="text-muted"><strong>Price:</strong> ${p.price ? '$' + p.price : '—'}</p>
+          <hr>
+          <h5>Description</h5>
+          <p>${p.description || 'No description provided.'}</p>
+          <a href="listings.html" class="btn btn-brown mt-3">Back to Listings</a>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDetails);
+  </script>
+
+</body></html>
