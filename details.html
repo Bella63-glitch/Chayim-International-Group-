@@ -100,12 +100,13 @@
 
     function renderDetails(p) {
       const container = document.getElementById('detailContainer');
+
       const formattedPrice = p.Price != null
         ? 'Ksh ' + Number(p.Price).toLocaleString()
         : '—';
 
-      const images = typeof p.imageurl === 'string'
-        ? p.imageurl.split(',').map(url => url.trim()).filter(url => url.length > 0)
+      const images = Array.isArray(p.imageurls) && p.imageurls.length
+        ? p.imageurls
         : [];
 
       const carouselId = 'propertyCarousel';
@@ -114,9 +115,9 @@
         ? `
           <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              ${images.map((url, index) => `
-                <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                  <img src="${url}" class="d-block w-100" alt="Property Image ${index + 1}">
+              ${images.map((url, i) => `
+                <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                  <img src="${url}" class="d-block w-100" alt="Property Image ${i + 1}">
                 </div>
               `).join('')}
             </div>
@@ -154,6 +155,9 @@
 
 </body>
 </html>
+
+
+
 
 
 
