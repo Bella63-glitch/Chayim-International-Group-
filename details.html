@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -32,9 +32,11 @@
       background: #6A2F0C;
     }
     .detail-img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
+      margin-bottom: 1rem;
       border: 1px solid var(--brand-brown);
+      border-radius: 4px;
     }
     .btn-whatsapp {
       background: var(--wa-green);
@@ -104,9 +106,14 @@
         ? 'Ksh ' + p.Price.toLocaleString()
         : '—';
 
+      // build images HTML from the array
+      const imagesHtml = (p.imageurls || [])
+        .map(url => `<img src="${url}" class="detail-img" alt="${p.title}">`)
+        .join('');
+
       container.innerHTML = `
         <div class="col-md-6">
-          ${p.imageurl ? `<img src="${p.imageurl}" class="detail-img" alt="${p.title}">` : ''}
+          ${ imagesHtml || '<p class="text-muted">No images available.</p>' }
         </div>
         <div class="col-md-6">
           <h2>${p.title || 'Untitled'}</h2>
@@ -126,3 +133,7 @@
 
 </body>
 </html>
+
+
+
+
