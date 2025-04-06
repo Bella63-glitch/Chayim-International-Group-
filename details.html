@@ -10,6 +10,8 @@
     :root {
       --brand-brown: #8B4513;
       --brand-white: #FFFFFF;
+      --wa-green:   #25D366;
+      --wa-dark:    #1DA851;
     }
     body {
       background: var(--brand-white);
@@ -34,6 +36,17 @@
       height: auto;
       border: 1px solid var(--brand-brown);
     }
+    .btn-whatsapp {
+      background: var(--wa-green);
+      color: var(--brand-white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+    .btn-whatsapp:hover {
+      background: var(--wa-dark);
+      color: var(--brand-white);
+    }
   </style>
 </head>
 <body>
@@ -48,6 +61,13 @@
   <div class="container">
     <div id="detailContainer" class="row gy-4">
       <!-- details get injected here -->
+    </div>
+
+    <!-- WhatsApp Contact -->
+    <div class="text-center mt-5 mb-4">
+      <a href="https://wa.me/254728915725" target="_blank" class="btn btn-whatsapp">
+        Chat on WhatsApp
+      </a>
     </div>
   </div>
 
@@ -80,6 +100,10 @@
 
     function renderDetails(p) {
       const container = document.getElementById('detailContainer');
+      const formattedPrice = p.Price != null
+        ? 'Ksh ' + p.Price.toLocaleString()
+        : '—';
+
       container.innerHTML = `
         <div class="col-md-6">
           ${p.imageurl ? `<img src="${p.imageurl}" class="detail-img" alt="${p.title}">` : ''}
@@ -88,7 +112,7 @@
           <h2>${p.title || 'Untitled'}</h2>
           <p class="text-muted"><strong>Category:</strong> ${p.category || '—'}</p>
           <p class="text-muted"><strong>Location:</strong> ${p.location || '—'}</p>
-          <p class="text-muted"><strong>Price:</strong> ${p.price ? '$' + p.price : '—'}</p>
+          <p class="text-muted"><strong>Price:</strong> ${formattedPrice}</p>
           <hr>
           <h5>Description</h5>
           <p>${p.description || 'No description provided.'}</p>
@@ -100,4 +124,5 @@
     document.addEventListener('DOMContentLoaded', loadDetails);
   </script>
 
-</body></html>
+</body>
+</html>
