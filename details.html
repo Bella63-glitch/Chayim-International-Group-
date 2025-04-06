@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -31,12 +31,10 @@
     .btn-brown:hover {
       background: #6A2F0C;
     }
-    .detail-img {
+    .carousel-item img {
       width: 100%;
       height: auto;
-      margin-bottom: 1rem;
       border: 1px solid var(--brand-brown);
-      border-radius: 4px;
     }
     .btn-whatsapp {
       background: var(--wa-green);
@@ -90,9 +88,9 @@
       if (!id) return alert('No property ID provided.');
 
       try {
-        const res  = await fetch(`${BASE_URL}/${id}`);
+        const res = await fetch(`${BASE_URL}/${id}`);
         if (!res.ok) throw new Error(await res.text());
-        const p    = await res.json();
+        const p = await res.json();
         renderDetails(p);
       } catch (e) {
         console.error(e);
@@ -103,17 +101,40 @@
     function renderDetails(p) {
       const container = document.getElementById('detailContainer');
       const formattedPrice = p.Price != null
-        ? 'Ksh ' + p.Price.toLocaleString()
+        ? 'Ksh ' + Number(p.Price).toLocaleString()
         : '—';
 
-      // build images HTML from the array
-      const imagesHtml = (p.imageurls || [])
-        .map(url => `<img src="${url}" class="detail-img" alt="${p.title}">`)
-        .join('');
+      const images = typeof p.imageurl === 'string'
+        ? p.imageurl.split(',').map(url => url.trim()).filter(url => url.length > 0)
+        : [];
+
+      const carouselId = 'propertyCarousel';
+
+      const imageGallery = images.length
+        ? `
+          <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              ${images.map((url, index) => `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                  <img src="${url}" class="d-block w-100" alt="Property Image ${index + 1}">
+                </div>
+              `).join('')}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        `
+        : '<p class="text-muted">No images available.</p>';
 
       container.innerHTML = `
         <div class="col-md-6">
-          ${ imagesHtml || '<p class="text-muted">No images available.</p>' }
+          ${imageGallery}
         </div>
         <div class="col-md-6">
           <h2>${p.title || 'Untitled'}</h2>
@@ -133,6 +154,29 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
