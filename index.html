@@ -33,22 +33,16 @@
     }
     header img:hover { transform:scale(1.1); }
 
-    /* Neat flex nav */
     nav {
-      display:flex;
-      gap:20px;
-      font-family:'Poppins', sans-serif;
+      display:flex; gap:20px; font-family:'Poppins', sans-serif;
     }
     nav a {
-      color:#fff; text-decoration:none;
-      font-weight:600;
+      color:#fff; text-decoration:none; font-weight:600;
       transition:color .3s ease-in-out;
     }
     nav a:hover { color:#f0f0f0; }
 
-    .slideshow {
-      position:relative; height:400px; overflow:hidden;
-    }
+    .slideshow { position:relative; height:400px; overflow:hidden; }
     .slide {
       position:absolute; width:100%; height:100%;
       background-size:cover; background-position:center;
@@ -107,10 +101,8 @@
     }
     .about-card p { font-size:1em; line-height:1.7; }
 
-    /* Button under mission */
     .about-card-button {
-      grid-column:1/-1;
-      text-align:center;
+      grid-column:1/-1; text-align:center;
     }
     .btn-about {
       display:inline-block; margin-top:20px;
@@ -126,7 +118,6 @@
       font-size:2.2em; margin-bottom:20px; color:#8B4513;
       font-family:'Poppins', sans-serif; text-align:center;
     }
-    /* Horizontal scroll for featured */
     .listings {
       display:flex; gap:30px;
       overflow-x:auto; padding-bottom:20px;
@@ -207,7 +198,6 @@
         <h3>Our Mission</h3> 
         <p>To connect people with exceptional properties while delivering trust, transparency, and transformation in real estate.</p> 
       </div> 
-      <!-- Button linking to a dedicated about-us page -->
       <div class="about-card-button">
         <a href="about-us.html" class="btn-about">Learn More About Us</a>
       </div>
@@ -232,8 +222,10 @@
 
     async function loadProperties() {
       try {
-        const res = await fetch(`${API_URL}?pageSize=6&sortBy=created DESC`);
-        const props = await res.json();
+        const res  = await fetch(`${API_URL}?pageSize=6&sortBy=created DESC`);
+        const json = await res.json();
+        // handle both array and DataQueryResponse
+        const props = Array.isArray(json) ? json : json.data;
         displayProperties(props);
       } catch (err) {
         console.error(err);
@@ -246,14 +238,20 @@
       container.innerHTML = "";
 
       properties.forEach(p => {
-        const formattedPrice = (p.Price != null)
+        // pick first image from imageurls array
+        const imageUrl = Array.isArray(p.imageurls) && p.imageurls.length
+          ? p.imageurls[0]
+          : 'https://via.placeholder.com/400x220';
+
+        // format Price (capital P)
+        const formattedPrice = p.Price != null
           ? Number(p.Price).toLocaleString('en-KE')
           : "N/A";
 
         const card = document.createElement("div");
         card.className = "property";
         card.innerHTML = `
-          <img src="${p.imageurl || 'https://via.placeholder.com/400x220'}" alt="Property">
+          <img src="${imageUrl}" alt="Property">
           <div class="property-info">
             <h3>${p.title || "No Title"}</h3>
             <p>Price: Ksh ${formattedPrice}</p>
@@ -268,6 +266,7 @@
     window.addEventListener("DOMContentLoaded", () => {
       loadProperties();
 
+      // About‐cards fade‐in
       const cards = document.querySelectorAll('.about-card');
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -276,17 +275,30 @@
       }, { threshold: 0.1 });
       cards.forEach(card => observer.observe(card));
 
+      // Hero slideshow
       const slides = document.querySelectorAll('.slide');
       let currentSlide = 0;
-      function showSlide(i) {
-        slides.forEach(s => s.classList.remove('active'));
-        slides[i].classList.add('active');
-      }
       setInterval(() => {
+        slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
+        slides[currentSlide].classList.add('active');
       }, 5000);
     });
   </script> 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
