@@ -123,23 +123,33 @@
 
     function renderListings(list) {
       const grid = document.getElementById('listingsGrid');
-      grid.innerHTML = list.map(p => `
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            ${p.imageurl ? `<img src="${p.imageurl}" class="card-img-top" alt="${p.title}">` : ''}
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${p.title || 'Untitled'}</h5>
-              <p class="card-text text-truncate">${p.description || ''}</p>
-              <ul class="list-unstyled mt-auto mb-2">
-                <li><strong>Category:</strong> ${p.category || '—'}</li>
-                <li><strong>Location:</strong> ${p.location || '—'}</li>
-                <li><strong>Price:</strong> ${p.Price != null ? 'Ksh ' + p.Price.toLocaleString() : '—'}</li>
-              </ul>
-              <a href="details.html?id=${p.objectId}" class="btn btn-brown mt-2">View Details</a>
+      grid.innerHTML = list.map(p => {
+        // grab the first image from the JSON array, if any
+        const imageUrl = Array.isArray(p.imageurls) && p.imageurls.length
+          ? p.imageurls[0]
+          : '';
+
+        return `
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              ${ imageUrl
+                  ? `<img src="${imageUrl}" class="card-img-top" alt="${p.title}">`
+                  : ''
+              }
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${p.title || 'Untitled'}</h5>
+                <p class="card-text text-truncate">${p.description || ''}</p>
+                <ul class="list-unstyled mt-auto mb-2">
+                  <li><strong>Category:</strong> ${p.category || '—'}</li>
+                  <li><strong>Location:</strong> ${p.location || '—'}</li>
+                  <li><strong>Price:</strong> ${p.price != null ? 'Ksh ' + p.price.toLocaleString() : '—'}</li>
+                </ul>
+                <a href="details.html?id=${p.objectId}" class="btn btn-brown mt-2">View Details</a>
+              </div>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     document.getElementById('btnApply').addEventListener('click', () => {
@@ -150,7 +160,7 @@
       const filtered = allProperties.filter(p =>
         (!cat              || p.category === cat) &&
         (!loc              || p.location === loc) &&
-        (p.Price != null   && p.Price <= max)
+        (p.price != null   && p.price <= max)
       );
       renderListings(filtered);
     });
@@ -167,3 +177,22 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
