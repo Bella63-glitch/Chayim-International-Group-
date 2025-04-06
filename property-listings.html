@@ -71,7 +71,7 @@
           </select>
         </div>
         <div class="col-md-4">
-          <label for="filterPrice" class="form-label">Max Price</label>
+          <label for="filterPrice" class="form-label">Max Price (Ksh)</label>
           <input type="number" id="filterPrice" class="form-control" placeholder="No limit">
         </div>
       </div>
@@ -133,7 +133,7 @@
               <ul class="list-unstyled mt-auto mb-2">
                 <li><strong>Category:</strong> ${p.category || '—'}</li>
                 <li><strong>Location:</strong> ${p.location || '—'}</li>
-                <li><strong>Price:</strong> ${p.price ? '$' + p.price : '—'}</li>
+                <li><strong>Price:</strong> ${p.Price != null ? 'Ksh ' + p.Price.toLocaleString() : '—'}</li>
               </ul>
               <a href="details.html?id=${p.objectId}" class="btn btn-brown mt-2">View Details</a>
             </div>
@@ -143,14 +143,14 @@
     }
 
     document.getElementById('btnApply').addEventListener('click', () => {
-      const cat   = document.getElementById('filterCategory').value;
-      const loc   = document.getElementById('filterLocation').value;
-      const price = parseFloat(document.getElementById('filterPrice').value) || Infinity;
+      const cat = document.getElementById('filterCategory').value;
+      const loc = document.getElementById('filterLocation').value;
+      const max = parseFloat(document.getElementById('filterPrice').value) || Infinity;
 
       const filtered = allProperties.filter(p =>
-        (!cat  || p.category === cat) &&
-        (!loc  || p.location === loc) &&
-        (p.price <= price)
+        (!cat              || p.category === cat) &&
+        (!loc              || p.location === loc) &&
+        (p.Price != null   && p.Price <= max)
       );
       renderListings(filtered);
     });
@@ -165,4 +165,5 @@
     document.addEventListener('DOMContentLoaded', init);
   </script>
 
-</body></html>
+</body>
+</html>
