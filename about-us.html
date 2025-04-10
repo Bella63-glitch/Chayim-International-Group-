@@ -6,12 +6,12 @@
     <title>About Chayim | Real Estate</title>
     <style>
       :root {
-        --brown: #5a381e;
+        --brown: #000000; /* Updated to Black */
         --cream: #f5f0e6;
         --white: #ffffff;
-        --accent: #a37b53;
+        --accent: #E67E22; /* Updated to Warm Orange */
         --brown-light: #705641;
-        --green: #38761d;
+        --green: #381C28; /* Updated to Forest Green */
         --green-light: #8fbc8f;
       }
       * {
@@ -42,7 +42,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(rgba(90, 56, 30, 0.7), rgba(90, 56, 30, 0.85));
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)); /* Updated overlay using Black */
         z-index: 1;
       }
       header .header-content {
@@ -231,6 +231,26 @@
         font-size: 1.1rem;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
       }
+      /* FAQs Section */
+      .faqs h2 {
+        text-align: center;
+        font-size: 2.8rem;
+        color: var(--brown-light);
+        margin-bottom: 2rem;
+      }
+      .faq-item {
+        margin-bottom: 1.5rem;
+      }
+      .faq-item h3 {
+        font-size: 1.6rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .faq-item p {
+        font-size: 1rem;
+        color: #443328;
+        line-height: 1.6;
+      }
       /* Call to Action Section */
       .cta {
         background: var(--accent);
@@ -292,6 +312,7 @@
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#core-values">Core Values</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#faqs">FAQs</a></li>
         </ul>
       </nav>
     </header>
@@ -440,6 +461,51 @@
       </ul>
     </section>
 
+    <!-- FAQs Section -->
+    <section class="section faqs" id="faqs">
+      <h2>Frequently Asked Questions (FAQs)</h2>
+      <div class="faq-item">
+        <h3>1. What services does Chayim International Group offer?</h3>
+        <p>Chayim provides comprehensive property development and financing services, including residential housing (affordable & luxury), commercial developments (offices, malls, mixed-use), international real estate projects, and mortgage/financing solutions.</p>
+      </div>
+      <div class="faq-item">
+        <h3>2. What is the “Buy and Build (BnB)” program?</h3>
+        <p>Buy and Build (BnB) is a financing model that allows clients to purchase land and build a home with up to 100% financing. It removes the burden of upfront capital and enables long-term repayment of up to 25 years at interest rates starting from 9.5%.</p>
+      </div>
+      <div class="faq-item">
+        <h3>3. Do I need a deposit to buy property through Chayim?</h3>
+        <p>No large down payment is required for fully financed plans. Chayim offers flexible financing models designed to make homeownership affordable and accessible.</p>
+      </div>
+      <div class="faq-item">
+        <h3>4. What is the Rent-to-Own model?</h3>
+        <p>This model allows tenants to transition into homeownership by applying their rent payments toward mortgage repayments. It’s ideal for those who may not qualify for traditional financing right away.</p>
+      </div>
+      <div class="faq-item">
+        <h3>5. Are your properties eco-friendly?</h3>
+        <p>Yes. Chayim integrates green technologies like solar panels, rainwater harvesting, energy-efficient materials, and smart home systems into all developments to promote sustainability and reduce utility costs.</p>
+      </div>
+      <div class="faq-item">
+        <h3>6. What countries does Chayim operate in?</h3>
+        <p>Besides Kenya, Chayim has projects in Europe, Africa, and the Middle East, with global partnerships for mortgage financing and international standard compliance.</p>
+      </div>
+      <div class="faq-item">
+        <h3>7. Can businesses also access financing through Chayim?</h3>
+        <p>Yes. Commercial clients can access financing through rent-sharing models and tailored commercial investment options.</p>
+      </div>
+      <div class="faq-item">
+        <h3>8. What is Chayim Kitchen Gardens?</h3>
+        <p>It’s an urban farming initiative integrated into housing projects. It allows residents to grow organic produce using smart technology, promoting food security and healthy living.</p>
+      </div>
+      <div class="faq-item">
+        <h3>9. What makes Chayim different from other developers?</h3>
+        <p>Chayim stands out through 100% financing options, sustainable & smart property designs, community-focused projects, and strong global and financial partnerships.</p>
+      </div>
+      <div class="faq-item">
+        <h3>10. How can I get started with Chayim?</h3>
+        <p>You can contact their team via phone at +254 728 915 725, email at info.chayim@gmail.com, or visit their website at www.chayim.co.ke.</p>
+      </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="section testimonials">
       <h2>What Our Community Says</h2>
@@ -483,32 +549,5 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
