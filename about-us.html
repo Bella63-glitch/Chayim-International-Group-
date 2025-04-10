@@ -1,390 +1,495 @@
 <!doctype html>
-<html lang="en"> 
- <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>About Chayim | Real Estate</title> 
-  <style>
-    :root {
-      --brown: #5a381e;
-      --cream: #f5f0e6;
-      --white: #ffffff;
-      --accent: #a37b53;
-      --brown-light: #705641;
-      --green: #38761d;
-      --green-light: #8fbc8f;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Chayim | Real Estate</title>
+    <style>
+      :root {
+        --brown: #5a381e;
+        --cream: #f5f0e6;
+        --white: #ffffff;
+        --accent: #a37b53;
+        --brown-light: #705641;
+        --green: #38761d;
+        --green-light: #8fbc8f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: var(--cream);
+        color: var(--brown);
+        line-height: 1.6;
+      }
+      /* Updated header styling */
+      header {
+        background: url('https://images.unsplash.com/photo-1560185127-6ed189bf3f5c?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+        color: var(--white);
+        text-align: center;
+        padding: 2rem 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+      header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(90, 56, 30, 0.7), rgba(90, 56, 30, 0.85));
+        z-index: 1;
+      }
+      header .header-content {
+        position: relative;
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInUpHeader 0.8s ease-out 0.2s forwards;
+      }
+      header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      /* Navigation styling placed below header content */
+      nav {
+        position: relative;
+        z-index: 2;
+        margin-top: 1rem;
+      }
+      nav ul {
+        list-style: none;
+        display: inline-flex;
+        gap: 1rem;
+      }
+      nav ul li a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+      nav ul li a:hover {
+        color: var(--cream);
+      }
+      /* Section container */
+      .section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        background-color: var(--white);
+      }
+      .intro {
+        text-align: center;
+        margin-bottom: 2rem;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out 0.2s forwards;
+      }
+      .intro h2 {
+        font-size: 2.8rem;
+        color: var(--brown-light);
+        margin-bottom: 1.5rem;
+      }
+      .intro p {
+        font-size: 1.15rem;
+        color: #5e4c3c;
+        max-width: 900px;
+        margin: auto;
+        line-height: 1.8;
+      }
+      /* Image placeholder style */
+      .placeholder-img {
+        width: 100%;
+        max-width: 600px;
+        display: block;
+        margin: 1rem auto;
+      }
+      /* Core Values Section */
+      .flex-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .card {
+        background-color: var(--white);
+        color: var(--brown);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      .card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.4s forwards; }
+      .card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.6s forwards; }
+      .card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.8s forwards; }
+      .card:nth-child(4) { animation: fadeInUp 0.8s ease-out 1s forwards; }
+      .card:nth-child(5) { animation: fadeInUp 0.8s ease-out 1.2s forwards; }
+      .card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        color: var(--accent);
+      }
+      .card p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #443328;
+      }
+      /* Services Section */
+      .services h2 {
+        font-size: 2.6rem;
+        color: var(--brown-light);
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .services p {
+        margin-bottom: 1rem;
+      }
+      .services h3 {
+        font-size: 1.8rem;
+        color: var(--accent);
+        margin-top: 1.5rem;
+      }
+      .services ul {
+        list-style: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .services ul li {
+        margin-bottom: 0.5rem;
+      }
+      /* Testimonials Section */
+      .testimonials {
+        background: linear-gradient(135deg, var(--cream) 70%, var(--accent) 70%);
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .testimonials::before {
+        content: '"';
+        font-family: serif;
+        font-size: 8rem;
+        color: rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      }
+      .testimonials h2 {
+        margin-bottom: 2rem;
+        color: var(--brown);
+        font-size: 2.6rem;
+        opacity: 0;
+        transform: scale(0.9);
+        animation: zoomIn 0.8s ease-out 0.2s forwards;
+        position: relative;
+        z-index: 1;
+      }
+      .testimonial-container {
+        position: relative;
+        height: 180px;
+        margin-bottom: 2rem;
+      }
+      .testimonial {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: #3e2e22;
+        max-width: 800px;
+        margin: auto;
+        padding: 0 1rem;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        transform: translateY(30px);
+        z-index: 1;
+      }
+      .testimonial.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .testimonial h4 {
+        margin-top: 1rem;
+        font-weight: bold;
+        color: var(--white);
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      }
+      /* Call to Action Section */
+      .cta {
+        background: var(--accent);
+        color: var(--white);
+        text-align: center;
+        padding: 3rem 2rem;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        margin-top: 2rem;
+        opacity: 0;
+        transform: scale(0.95);
+        animation: zoomIn 0.8s ease-out 0.4s forwards;
+      }
+      .cta h3 {
+        margin-bottom: 2rem;
+        font-size: 2.8rem;
+        font-weight: 500;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .cta a {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background-color: var(--brown);
+        color: var(--white);
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 1.15rem;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      }
+      .cta a:hover {
+        background-color: var(--brown-light);
+        transform: scale(1.05);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+      }
+      @keyframes fadeInUpHeader {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes zoomIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section (Small) -->
+    <header>
+      <div class="header-content">
+        <h1>Chayim International Group</h1>
+      </div>
+      <!-- Navigation below header content -->
+      <nav>
+        <ul>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#core-values">Core Values</a></li>
+          <li><a href="#services">Services</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--cream);
-      color: var(--brown);
-      line-height: 1.6;
-    }
+    <!-- About Us Section -->
+    <section class="section intro" id="about-us">
+      <h2>About Us</h2>
+      <img src="https://i.postimg.cc/BQPrF7s9/about-us.png" alt="About Us" class="placeholder-img" />
+      <p>
+        Chayim International Group is a premier property development firm dedicated to constructing high-quality residential and commercial properties both locally and internationally. With a strategic focus on a fully financed/mortgage-based model, we empower individuals and businesses to own properties without the traditional financial burdens of upfront costs. Our innovative approach ensures accessibility, affordability, and sustainability in housing development. We partner with individuals, families, and businesses to provide exceptional property solutions that turn dreams into reality. Our expertise spans across residential and commercial developments, as well as mortgage financing, and we leverage cutting-edge technology and sustainable building practices to deliver outstanding results.
+      </p>
+    </section>
 
-    header {
-      background: url('https://images.unsplash.com/photo-1560185127-6ed189bf3f5c?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      color: var(--white);
-      text-align: center;
-      padding: 10rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
+    <!-- Core Values Section -->
+    <section class="section" id="core-values">
+      <h2>Our Core Values</h2>
+      <div class="flex-cards">
+        <div class="card">
+          <h3>Integrity</h3>
+          <p>
+            We uphold the highest ethical standards in all our dealings, ensuring transparency, honesty, and accountability in every project we undertake. Trust is the foundation of our relationships with clients, partners, and stakeholders.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Partnership</h3>
+          <p>
+            Collaboration is at the heart of our operations. We work closely with financial institutions, government bodies, and industry leaders to develop sustainable and affordable housing solutions that meet diverse needs.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Empowerment</h3>
+          <p>
+            We believe in empowering individuals and businesses through accessible financing models and innovative property solutions. Our goal is to make homeownership and property investment attainable for all.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Sustainability</h3>
+          <p>
+            Environmental responsibility is a core focus in our projects. We implement eco-friendly construction practices, energy-efficient designs, and sustainable materials to contribute to a greener future.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Innovation</h3>
+          <p>
+            We continuously explore cutting-edge technologies and creative solutions in property development, ensuring that our clients benefit from modern, high-quality, and efficient property solutions.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(90, 56, 30, 0.7), rgba(90, 56, 30, 0.85));
-      z-index: 1;
-    }
+    <!-- Vision Section -->
+    <section class="section">
+      <h2>Our Vision</h2>
+      <p>“A catalyst for sustainable housing solutions, transforming dreams into reality.”</p>
+    </section>
 
-    header .header-content {
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(-30px);
-      animation: fadeInUpHeader 1.2s ease-out 0.3s forwards;
-    }
+    <!-- Mission Section -->
+    <section class="section">
+      <h2>Our Mission</h2>
+      <p>
+        To pioneer and transform the future of property development by fostering innovative solutions, delivering unmatched customer satisfaction in both residential and commercial markets, and enhancing eco-friendly property development.
+      </p>
+    </section>
 
-    header h1 {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
+    <!-- Services Section -->
+    <section class="section services" id="services">
+      <h2>Our Services</h2>
+      <p>
+        Chayim International Group offers a wide range of property development and financing services tailored to meet the unique needs of our clients. Whether you are looking to invest in residential or commercial properties or seeking accessible financing options, our comprehensive services ensure top-tier, customized solutions for all property requirements.
+      </p>
+      <!-- Residential Housing Development -->
+      <h3>1. Residential Housing Development</h3>
+      <p>
+        We specialize in creating residential communities that range from affordable housing to luxury living, meeting the needs of all demographics with a variety of housing solutions.
+      </p>
+      <ul>
+        <li>
+          <strong>Affordable Housing Projects:</strong> We are committed to providing affordable housing to individuals and families in need. Our developments feature well-designed, cost-effective homes that do not compromise on quality—creating first-time homeowner opportunities and stimulating local economies.
+        </li>
+        <li>
+          <strong>Luxury Apartments and Gated Communities:</strong> For those seeking premium living spaces, we offer luxury apartments and gated communities with top-tier amenities such as swimming pools, gyms, and rooftop gardens.
+        </li>
+        <li>
+          <strong>Fully Financed Homeownership Plans:</strong> Our flagship offering enables individuals to own homes without a large down payment through flexible financing models, low-interest rates, and extended repayment periods.
+        </li>
+        <li>
+          <strong>Rent-to-Own Model (Tenant Purchase Model):</strong> We provide a unique option where tenants use their rent payments to build toward homeownership by matching a portion of their rent to the mortgage repayment.
+        </li>
+      </ul>
 
-    header p {
-      font-size: 1.3rem;
-      max-width: 800px;
-      margin: 0 auto;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    }
+      <!-- Commercial Property Development -->
+      <h3>2. Commercial Property Development</h3>
+      <p>
+        We develop commercial properties that foster business growth and enhance customer experiences.
+      </p>
+      <ul>
+        <li>
+          <strong>Office Buildings:</strong> Modern office spaces designed to promote productivity and innovation with energy-efficient systems and flexible layouts.
+        </li>
+        <li>
+          <strong>Retail Centers and Malls:</strong> Innovative retail spaces, including malls and plazas, that enhance the shopping experience with a mix of retail outlets, cafes, and entertainment.
+        </li>
+        <li>
+          <strong>Mixed-Use Developments:</strong> Integrated developments that combine residential, commercial, and leisure spaces, creating sustainable, walkable communities.
+        </li>
+      </ul>
 
-    .section {
-      padding: 6rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      background-color: var(--white);
-      margin-bottom: 4rem;
-    }
+      <!-- International Projects -->
+      <h3>3. International Projects</h3>
+      <p>
+        With a global outlook, we expand our operations into international markets and bring our expertise in property development and financing to new regions.
+      </p>
+      <ul>
+        <li>
+          <strong>Expansion into Global Markets:</strong> Identifying high-growth areas and collaborating with local authorities to provide sustainable housing solutions in regions such as Europe, Africa, and the Middle East.
+        </li>
+        <li>
+          <strong>Strategic Partnerships with International Mortgage Financiers:</strong> Partnering with international financial institutions to make mortgage financing and property ownership accessible globally.
+        </li>
+        <li>
+          <strong>Compliance with Global Building Standards:</strong> Adhering to local building codes and international best practices, ensuring sustainability and safety in all our developments.
+        </li>
+      </ul>
 
-    .intro {
-      text-align: center;
-      margin-bottom: 4rem;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out 0.2s forwards;
-    }
+      <!-- Mortgage & Financing Solutions -->
+      <h3>4. Mortgage & Financing Solutions</h3>
+      <p>
+        In partnership with leading financial institutions, we offer innovative mortgage and financing options for both residential and commercial projects.
+      </p>
+      <ul>
+        <li>
+          <strong>Residential Financing:</strong>
+          <ul>
+            <li>Up to 100% Financing</li>
+            <li>Repayment of up to 25 years</li>
+            <li>Interest rates starting as low as 9.5%</li>
+            <li><strong>Buy and Build (BnB):</strong> Purchase land and finance the construction of your dream home, even if you don’t yet own land.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Commercial Financing:</strong>
+          <ul>
+            <li>Repayment by Rent Sharing (70%/30% Model)</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
 
-    .intro h2 {
-      font-size: 2.8rem;
-      color: var(--brown-light);
-      margin-bottom: 1.5rem;
-    }
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <h2>What Our Community Says</h2>
+      <div class="testimonial-container">
+        <div class="testimonial active">
+          <p>
+            “Chayim's innovative financing truly changed my life. I never thought I could own such a beautiful property. Their team was incredibly supportive.”
+          </p>
+          <h4>— Amina Wanjiku</h4>
+        </div>
+        <div class="testimonial">
+          <p>
+            “The quality of construction and thoughtful design are exceptional. They clearly care about every detail and the communities they build.”
+          </p>
+          <h4>— Juma Okello</h4>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Being part of a Chayim development feels like joining a family. They build not just structures, but vibrant communities.”
+          </p>
+          <h4>— Zawadi Nkatha</h4>
+        </div>
+      </div>
+    </section>
 
-    .intro p {
-      font-size: 1.15rem;
-      color: #5e4c3c;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.8;
-    }
+    <!-- Call to Action Section -->
+    <section class="section cta">
+      <h3>Ready to Begin Your Property Journey?</h3>
+      <a href="https://wa.me/254728915725" target="_blank">Get in Touch</a>
+    </section>
 
-    .flex-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
-      margin-top: 3rem;
-    }
+    <script>
+      const testimonials = document.querySelectorAll('.testimonial');
+      let index = 0;
+      function rotateTestimonials() {
+        testimonials.forEach(t => t.classList.remove('active'));
+        testimonials[index].classList.add('active');
+        index = (index + 1) % testimonials.length;
+      }
+      setInterval(rotateTestimonials, 4000);
+    </script>
+  </body>
+</html>
 
-    .card {
-      background-color: var(--white);
-      color: var(--brown);
-      padding: 3rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      opacity: 0;
-      transform: translateY(40px);
-    }
 
-    .card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.4s forwards; }
-    .card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.6s forwards; }
-    .card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.8s forwards; }
 
-    .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
 
-    .card h3 {
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      color: var(--accent);
-    }
 
-    .card p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #443328;
-    }
 
-    .services {
-      margin-top: 3rem;
-      background-color: var(--cream);
-      padding: 4rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
 
-    .services h2 {
-      font-size: 2.6rem;
-      color: var(--brown-light);
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
 
-    .services ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
 
-    .services ul li {
-      background-color: var(--white);
-      color: var(--brown);
-      padding: 1.5rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      display: flex;
-      align-items: center;
-      border-left: 5px solid var(--green-light);
-    }
 
-    .services ul li::before {
-      content: '\2713';
-      color: var(--green);
-      font-size: 1.2rem;
-      margin-right: 0.8rem;
-    }
-
-    .testimonials {
-      background: linear-gradient(135deg, var(--cream) 70%, var(--accent) 70%);
-      padding: 6rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonials::before {
-      content: '"';
-      font-family: serif;
-      font-size: 8rem;
-      color: rgba(255, 255, 255, 0.1);
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-    }
-
-    .testimonials h2 {
-      margin-bottom: 3rem;
-      color: var(--brown);
-      font-size: 2.6rem;
-      opacity: 0;
-      transform: scale(0.9);
-      animation: zoomIn 0.8s ease-out 0.2s forwards;
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-container {
-      position: relative;
-      height: 180px;
-      margin-bottom: 2rem;
-    }
-
-    .testimonial {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: #3e2e22;
-      max-width: 800px;
-      margin: auto;
-      padding: 0 1rem;
-      transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-      transform: translateY(30px);
-      z-index: 1;
-    }
-
-    .testimonial.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .testimonial h4 {
-      margin-top: 1.5rem;
-      font-weight: bold;
-      color: var(--white);
-      font-size: 1.1rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    }
-
-    .cta {
-      background: var(--accent);
-      color: var(--white);
-      text-align: center;
-      padding: 5rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      margin-bottom: 4rem;
-      opacity: 0;
-      transform: scale(0.95);
-      animation: zoomIn 0.8s ease-out 0.4s forwards;
-    }
-
-    .cta h3 {
-      margin-bottom: 2.5rem;
-      font-size: 2.8rem;
-      font-weight: 500;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    .cta a {
-      display: inline-block;
-      padding: 1.2rem 3rem;
-      background-color: var(--brown);
-      color: var(--white);
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 1.15rem;
-      transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .cta a:hover {
-      background-color: var(--brown-light);
-      transform: scale(1.05);
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
-    }
-
-    @keyframes fadeInUpHeader {
-      from {opacity: 0; transform: translateY(-40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes zoomIn {
-      from {transform: scale(0.9); opacity: 0;}
-      to {transform: scale(1); opacity: 1;}
-    }
-  </style> 
- </head> 
- <body> 
-  <header> 
-   <div class="header-content"> 
-    <h1>Building Dreams, Creating Spaces</h1> 
-    <p>Discover our innovative approach to real estate, where your vision becomes our mission.</p> 
-   </div> 
-  </header> 
-
-  <section class="section intro"> 
-   <h2>Our Story</h2> 
-   <p>Chayim International Group was founded on the principle of making property ownership accessible and sustainable. We believe in breaking down barriers and empowering individuals, families, and businesses to find their perfect space, both locally and globally. Our journey is driven by a passion for quality, innovation, and a deep understanding of the communities we serve.</p> 
-  </section> 
-
-  <section class="section"> 
-   <h2>Our Guiding Principles</h2> 
-   <div class="flex-cards"> 
-    <div class="card"> 
-     <h3>Innovation</h3> 
-     <p>We constantly seek new and creative solutions in property development and financing to better serve our clients and the environment.</p> 
-    </div> 
-    <div class="card"> 
-     <h3>Sustainability</h3> 
-     <p>We are committed to eco-friendly building practices and creating developments that are both beautiful and environmentally responsible, incorporating green spaces and energy-efficient designs.</p> 
-    </div> 
-    <div class="card"> 
-     <h3>Accessibility</h3> 
-     <p>Our unique fully financed model is designed to make property ownership a reality for a wider range of people, removing traditional financial hurdles.</p> 
-    </div> 
-   </div> 
-  </section> 
-
-  <section class="services"> 
-   <h2>Our Comprehensive Services</h2> 
-   <ul> 
-    <li>Affordable housing projects designed for community living</li> 
-    <li>Luxury apartments with premium amenities and finishes</li> 
-    <li>Exclusive gated communities offering security and privacy</li> 
-    <li>Fully financed homeownership solutions tailored to individual needs</li> 
-    <li>Property management services for hassle-free ownership</li> 
-    <li>Investment opportunities in high-growth real estate sectors</li> 
-    <li>Land acquisition and development consulting</li> 
-    <li>Sustainable building design and construction</li> 
-    <li>Renovation and remodeling services to enhance your existing property</li> 
-    <li>Real estate market analysis and advisory services</li> 
-    <li>Commercial property development for businesses</li> 
-    <li>Green building certifications and compliance</li> 
-   </ul> 
-  </section> 
-
-  <section class="testimonials"> 
-   <h2>What Our Community Says</h2> 
-   <div class="testimonial-container"> 
-    <div class="testimonial active"> 
-     <p>“Chayim's innovative financing truly changed my life. I never thought I could own such a beautiful property. Their team was incredibly helpful and supportive throughout the entire process.”</p> 
-     <h4>— Amina Wanjiku</h4> 
-    </div> 
-    <div class="testimonial"> 
-     <p>“The quality of the construction and the thoughtful design of Chayim's properties are exceptional. It's clear they care about the details and the people who will live in their spaces.”</p> 
-     <h4>— Juma Okello</h4> 
-    </div> 
-    <div class="testimonial"> 
-     <p>“Being part of a Chayim development feels like being part of a family. They're not just building structures; they're building vibrant and supportive communities. I'm so grateful for this opportunity.”</p> 
-     <h4>— Zawadi Nkatha</h4> 
-    </div> 
-   </div> 
-  </section> 
-
-  <div class="section cta"> 
-   <h3>Ready to Begin Your Property Journey?</h3> 
-   <a href="https://wa.me/254728915725" target="_blank">Get in Touch</a>
-  </div> 
-
-  <script>
-    const testimonials = document.querySelectorAll('.testimonial');
-    let index = 0;
-
-    function rotateTestimonials() {
-      testimonials.forEach((t) => t.classList.remove('active'));
-      testimonials[index].classList.add('active');
-      index = (index + 1) % testimonials.length;
-    }
-
-    setInterval(rotateTestimonials, 4000);
-  </script> 
- 
-</body></html>
