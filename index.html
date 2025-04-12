@@ -15,10 +15,8 @@
         font-family: Arial, sans-serif;
         color: #000;
         line-height: 1.5;
-        /* Background image covers the entire page and stays fixed for clarity */
         background: url("https://i.postimg.cc/RZtMk54z/fc4dc01de023850cff0a2e6088c06959.jpg") no-repeat center center fixed;
         background-size: cover;
-        /* These properties help ensure the background image is rendered clearly */
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
         image-rendering: pixelated;
@@ -31,32 +29,22 @@
       a:hover {
         color: #E67E22;
       }
-      /* Fade-in animation for sections */
+      /* Basic fade in for sections */
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      /* Slide-in animation for hero text */
+      /* Slide in animation for hero text */
       @keyframes slideIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
-      }
-      /* Glow animation for text */
-      @keyframes glow {
-        from { text-shadow: 0 0 10px rgba(255,255,255,0.7); }
-        to { text-shadow: 0 0 20px rgba(255,255,255,1); }
-      }
-      /* Slide in from left for grid items */
-      @keyframes slideInLeft {
-        from { opacity: 0; transform: translateX(-50px); }
-        to { opacity: 1; transform: translateX(0); }
       }
       /* Apply orange outline and rounded corners to all section elements */
       section {
         border: 2px solid #E67E22;
         border-radius: 15px;
         margin: 20px 0;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.8s ease-out;
         background: #fff;
       }
       /* HEADER */
@@ -72,7 +60,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-direction: row;
       }
       .logo {
         display: flex;
@@ -87,7 +74,7 @@
         color: #E67E22;
         font-weight: bold;
       }
-      /* Dropdown Menu Styling - menu button in orange */
+      /* Dropdown Menu Styling */
       .dropdown-menu {
         position: relative;
       }
@@ -137,6 +124,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        preload: auto;
       }
       .hero-overlay {
         position: absolute;
@@ -159,12 +147,12 @@
       .hero-text h2 {
         font-size: 36px;
         margin-bottom: 15px;
-        animation: slideIn 2s ease forwards, glow 1.5s ease-in-out infinite alternate;
+        animation: slideIn 1.5s ease forwards;
       }
       .hero-text p {
         font-size: 18px;
         margin-bottom: 20px;
-        animation: slideIn 2.5s ease forwards, glow 1.5s ease-in-out infinite alternate;
+        animation: slideIn 2s ease forwards;
       }
       .hero-text .btn-group {
         display: flex;
@@ -208,14 +196,100 @@
         line-height: 1.6;
         text-align: justify;
       }
-      /* FEATURED PROPERTIES SECTION (SLIDESHOW) */
+      .about-us .learn-more {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #000;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+      }
+      .about-us .learn-more:hover {
+        background: #333;
+      }
+      /* SERVICES SLIDER SECTION */
+      .services-slider {
+        position: relative;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        overflow: hidden;
+        animation: fadeIn 0.8s ease-out;
+        text-align: center;
+      }
+      .services-slider h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #381C28;
+      }
+      .services-container {
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+        transition: transform 0.5s ease;
+        margin-bottom: 20px;
+        width: max-content;
+      }
+      .service-card {
+        background: #fff;
+        border: 2px solid #228B22;
+        border-radius: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        flex-shrink: 0;
+        min-width: 300px;
+        justify-content: center;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-card h4 {
+        font-size: 20px;
+        color: #228B22;
+        margin-bottom: 10px;
+      }
+      .service-card p {
+        font-size: 16px;
+        color: #000;
+      }
+      .services-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 3;
+      }
+      .services-btn:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .services-prev { left: 15px; }
+      .services-next { right: 15px; }
+      .services-slider .view-services {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #228B22;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+      }
+      .services-slider .view-services:hover {
+        background: #1e7a1e;
+      }
+      /* FEATURED PROPERTIES SECTION (SLIDESHOW) */ 
       .featured-properties {
         position: relative;
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
         overflow: hidden;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.8s ease-out;
       }
       .featured-properties h3 {
         text-align: center;
@@ -228,6 +302,7 @@
         gap: 20px;
         overflow: hidden;
         transition: transform 0.5s ease;
+        width: max-content;
       }
       .property-card {
         background: #fff;
@@ -235,8 +310,7 @@
         border-radius: 15px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        flex-shrink: 0;
         min-width: 300px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
@@ -301,7 +375,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.8s ease-out;
       }
       .grid-column {
         flex: 1 1 calc(33.333% - 40px);
@@ -311,7 +385,7 @@
         border-radius: 15px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         background: #fff;
-        animation: slideInLeft 1s ease-out forwards;
+        animation: slideIn 0.8s ease-out forwards;
       }
       .grid-column h4 {
         font-size: 20px;
@@ -328,7 +402,7 @@
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.8s ease-out;
       }
       .faq-section h3 {
         text-align: center;
@@ -360,7 +434,7 @@
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.8s ease-out;
       }
       .testimonials h3 {
         text-align: center;
@@ -413,10 +487,10 @@
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        background: green;
+        background: #E67E22;
         border-radius: 15px;
         text-align: center;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.8s ease-out;
         color: #fff;
       }
       footer p {
@@ -448,13 +522,13 @@
     </style> 
   <script>
       window.onload = function() {
-        // Automatically play video (muted is required for autoplay)
+        // Automatically play hero video (muted is required for autoplay)
         const heroVideo = document.querySelector('.hero video');
         if (heroVideo) {
           heroVideo.play();
         }
         
-        // Retrieve featured properties and initialize other sliders.
+        // Retrieve featured properties and initialize properties slider.
         async function retrieveProperties() {
           try {
             const url = "https://api.backendless.com/43FDF951-CA7C-4AA1-8CE5-EAEFE8AABBBB/D816E27F-267C-45B1-9932-AE452537BA0E/data/Properties?pagesize=3";
@@ -522,6 +596,27 @@
         }
         retrieveProperties();
         
+        // Services slider code.
+        let serviceIndex = 0;
+        function showService(index) {
+          const container = document.querySelector('.services-container');
+          if (!container.children.length) return;
+          const cardWidth = container.children[0].offsetWidth + 20;
+          container.style.transform = 'translateX(' + (-index * cardWidth) + 'px)';
+        }
+        window.nextService = function() {
+          const container = document.querySelector('.services-container');
+          serviceIndex++;
+          if (serviceIndex >= container.childElementCount) { serviceIndex = 0; }
+          showService(serviceIndex);
+        }
+        window.prevService = function() {
+          const container = document.querySelector('.services-container');
+          serviceIndex--;
+          if (serviceIndex < 0) { serviceIndex = container.childElementCount - 1; }
+          showService(serviceIndex);
+        }
+        
         // Testimonials slider code.
         let testimonialIndex = 0;
         function showTestimonial(index) {
@@ -573,61 +668,62 @@
       };
     </script> 
  </head> 
- <body> 
-  <!-- HEADER --> 
+ <body> <!-- HEADER --> 
   <header> 
    <div class="nav-container"> 
     <div class="logo"> 
-     <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo">
-     <h1>Chayim International Group</h1>
+     <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo"> 
+     <h1>Chayim International Group</h1> 
     </div> 
-    <div class="dropdown-menu"> 
-      <button class="dropdown-btn">Menu</button> 
-      <div class="dropdown-content"> 
-        <a href="#">Home</a> 
-        <a href="#">Listings</a> 
-        <a href="#">Financing</a> 
-        <a href="#">Contact</a>
-      </div> 
+    <div class="dropdown-menu"> <button class="dropdown-btn">Menu</button> 
+     <div class="dropdown-content"> <a href="#">Home</a> <a href="#">Listings</a> <a href="#">Financing</a> <a href="#">Contact</a> 
+     </div> 
     </div> 
    </div> 
-  </header> 
-  <!-- HERO SECTION WITH VIDEO --> 
+  </header> <!-- HERO SECTION WITH VIDEO --> 
   <div class="hero"> 
-   <video autoplay muted loop playsinline>
-    <source src="https://ia801501.us.archive.org/3/items/vid-20250411-121541/VID_20250411_121541.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+   <video autoplay muted loop playsinline preload="auto"> 
+    <source src="https://ia801501.us.archive.org/3/items/vid-20250411-121541/VID_20250411_121541.mp4" type="video/mp4"> Your browser does not support the video tag. 
    </video> 
    <div class="hero-overlay"></div> 
    <div class="hero-text"> 
     <h2>Dreams to Life</h2> 
     <p>Transforming sustainable housing dreams into reality.</p> 
-    <div class="btn-group">
-      <button>Properties</button>
-      <button>Get in Touch</button>
-    </div>
+    <div class="btn-group"> <button>Properties</button> <button>Get in Touch</button> 
+    </div> 
    </div> 
-  </div> 
-  <!-- ABOUT US SECTION --> 
+  </div> <!-- ABOUT US SECTION --> 
   <section class="about-us"> 
-    <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo">
-    <h3>About Us</h3> 
-    <p>
-      Chayim International Group is a premier property development firm dedicated to constructing high-quality residential and commercial properties both locally and internationally. With a strategic focus on a fully financed/mortgage-based model, we empower individuals and businesses to own properties without the traditional financial burdens of upfront costs. <br><br> 
-      We partner with individuals, families, and businesses to provide exceptional property solutions that turn dreams into reality. Our expertise spans across residential and commercial developments, as well as mortgage financing, and we leverage cutting-edge technology and sustainable building practices to deliver outstanding results.
-    </p> 
-  </section> 
-  <!-- FEATURED PROPERTIES SECTION (SLIDESHOW) --> 
+   <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo"> 
+   <h3>About Us</h3> 
+   <p> Chayim International Group is a premier property developer specializing in fully financed, mortgage-based solutions that turn dreams into reality. We design exceptional residential and commercial projects with sustainability at their core. </p> <a href="about.html" class="learn-more">Learn More</a> 
+  </section> <!-- SERVICES SLIDER SECTION --> 
+  <section class="services-slider"> 
+   <h3>Our Services</h3> 
+   <div class="services-container"> 
+    <div class="service-card"> 
+     <h4>Residential Development</h4> 
+     <p>Quality homes tailored to your dreams.</p> 
+    </div> 
+    <div class="service-card"> 
+     <h4>Commercial Properties</h4> 
+     <p>Innovative spaces for business growth.</p> 
+    </div> 
+    <div class="service-card"> 
+     <h4>Financing Solutions</h4> 
+     <p>Fully financed, mortgage-based models.</p> 
+    </div> 
+    <div class="service-card"> 
+     <h4>Sustainable Designs</h4> 
+     <p>Eco-friendly, cost-efficient practices.</p> 
+    </div> 
+   </div> <a href="services.html" class="view-services">View Services</a> <button class="services-btn services-prev" onclick="prevService()">❮</button> <button class="services-btn services-next" onclick="nextService()">❯</button> 
+  </section> <!-- FEATURED PROPERTIES SECTION (SLIDESHOW) --> 
   <section class="featured-properties"> 
    <h3>Featured Property Listings</h3> 
-   <div class="featured-properties-container"> 
-     <!-- Property cards will be dynamically inserted here --> 
-   </div> 
-   <!-- Slider buttons for featured properties --> 
-   <button class="featured-btn featured-prev" onclick="prevProperty()">❮</button> 
-   <button class="featured-btn featured-next" onclick="nextProperty()">❯</button> 
-  </section> 
-  <!-- GRID SECTION: VISION | MISSION | SLOGAN --> 
+   <div class="featured-properties-container"> <!-- Property cards will be dynamically inserted here --> 
+   </div> <button class="featured-btn featured-prev" onclick="prevProperty()">❮</button> <button class="featured-btn featured-next" onclick="nextProperty()">❯</button> 
+  </section> <!-- GRID SECTION: VISION | MISSION | SLOGAN --> 
   <section class="grid-section"> 
    <div class="grid-column"> 
     <h4>Our Vision</h4> 
@@ -635,14 +731,13 @@
    </div> 
    <div class="grid-column"> 
     <h4>Our Mission</h4> 
-    <p>"To pioneer and transform the future of property development services by fostering innovative property solutions, unmatched customer satisfaction, and exceptional eco-friendly practices across residential and commercial markets."</p> 
+    <p>"To pioneer and transform the future of property development services by fostering innovative property solutions, unmatched customer satisfaction, and exceptional eco-friendly practices across markets."</p> 
    </div> 
    <div class="grid-column"> 
     <h4>Our Slogan</h4> 
-    <p>"Dreams to Life." We believe everyone deserves the opportunity to own a home or business property. Through sustainable financing models and innovative technology, we make these dreams a reality.</p> 
+    <p>"Dreams to Life." We believe everyone deserves the opportunity to own a home or business property, and we make these dreams a reality through innovative, sustainable financing models.</p> 
    </div> 
-  </section> 
-  <!-- FAQ SECTION --> 
+  </section> <!-- FAQ SECTION --> 
   <section class="faq-section"> 
    <h3>Frequently Asked Questions</h3> 
    <div class="faq-item"> 
@@ -651,58 +746,55 @@
    </div> 
    <div class="faq-item"> 
     <h4 onclick="toggleFaq(this)">How does the Buy and Build (BnB) model work?</h4> 
-    <p>With our Buy and Build (BnB) model, you can purchase a plot in your dream location and build your custom-designed home, all under a single, fully financed plan that eliminates the need for large upfront payments.</p> 
+    <p>With our Buy and Build (BnB) model, you can purchase a plot in your dream location and build your custom-designed home, all under a single, fully financed plan that eliminates large upfront payments.</p> 
    </div> 
    <div class="faq-item"> 
     <h4 onclick="toggleFaq(this)">How do you incorporate sustainability in your projects?</h4> 
     <p>Our developments integrate green technologies such as solar panels, rainwater harvesting, energy-efficient designs, and smart sensors to ensure lower long-term costs and a reduced environmental footprint.</p> 
+   </div> <!-- Additional FAQs --> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">What green technology initiatives do you implement?</h4> 
+    <p>We integrate advanced green solutions including urban farming via Chayim Kitchen Gardens, solar power integration, energy-saving building designs, and rainwater harvesting systems that promote sustainability.</p> 
    </div> 
-  </section> 
-  <!-- TESTIMONIALS SECTION --> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">Who are your strategic partners?</h4> 
+    <p>We partner with key industry leaders such as OPDA Investment from Portugal and various financial institutions to deliver innovative, eco-friendly, and fully financed property solutions.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">How long have you been in the property development industry?</h4> 
+    <p>Chayim International Group boasts over 15 years of experience in the property development and finance sectors.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">What markets do you serve?</h4> 
+    <p>Our operations span local and international markets, developing projects across Kenya and beyond, adapting to diverse customer needs globally.</p> 
+   </div> 
+  </section> <!-- TESTIMONIALS SECTION --> 
   <section class="testimonials"> 
    <h3>What Our Clients Say</h3> 
-   <div class="testimonial-slider"> 
-     <button class="testimonial-btn test-prev" onclick="prevTestimonial()">❮</button> 
-     <div class="testimonial-slides"> 
-       <div class="testimonial-slide"> 
-         <p>"Chayim International Group made my dream of owning a home a reality. Their innovative financing and commitment to sustainability truly set them apart."</p> 
-         <h5>- Mwangi Kamau</h5> 
-       </div> 
-       <div class="testimonial-slide"> 
-         <p>"Their Buy and Build model is revolutionary. I appreciate the personalized service and transparent process."</p> 
-         <h5>- Amina Odhiambo</h5> 
-       </div> 
-       <div class="testimonial-slide"> 
-         <p>"The quality of construction and the eco-friendly approach is unmatched. I highly recommend Chayim International Group."</p> 
-         <h5>- Juma Wanjiku</h5> 
-       </div> 
+   <div class="testimonial-slider"> <button class="testimonial-btn test-prev" onclick="prevTestimonial()">❮</button> 
+    <div class="testimonial-slides"> 
+     <div class="testimonial-slide"> 
+      <p>"Chayim International Group made my dream of owning a home a reality. Their innovative financing and commitment to sustainability truly set them apart."</p> 
+      <h5>- Mwangi Kamau</h5> 
      </div> 
-     <button class="testimonial-btn test-next" onclick="nextTestimonial()">❯</button> 
+     <div class="testimonial-slide"> 
+      <p>"Their Buy and Build model is revolutionary. I appreciate the personalized service and transparent process."</p> 
+      <h5>- Amina Odhiambo</h5> 
+     </div> 
+     <div class="testimonial-slide"> 
+      <p>"The quality of construction and the eco-friendly approach is unmatched. I highly recommend Chayim International Group."</p> 
+      <h5>- Juma Wanjiku</h5> 
+     </div> 
+    </div> <button class="testimonial-btn test-next" onclick="nextTestimonial()">❯</button> 
    </div> 
-  </section> 
-  <!-- FOOTER --> 
+  </section> <!-- FOOTER --> 
   <footer> 
    <p>© 2025 Chayim International Group. All rights reserved.</p> 
    <p>Office: Park Suites, 5th Floor, Parklands, Nairobi, Kenya | Phone: +254 728 915 725</p> 
    <p>Email: info.chayim@gmail.com | Website: <a href="http://www.chayim.co.ke" style="color:#fff;">www.chayim.co.ke</a></p> 
   </footer> 
  </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ </html> 
 
 
 
