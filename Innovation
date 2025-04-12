@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+  <title>Services &amp; Solutions | Chayim International Group</title> 
+  <style>
+    /* GENERAL STYLES */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    a {
+      color: #E67E22;
+      text-decoration: none;
+    }
+    h1, h2, h3, h4 {
+      color: #228B22;
+    }
+    p {
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 10px;
+    padding: 15px;
+  }
+}
+
+/* HEADER */
+header {
+  background: #fff;
+  padding: 20px 10px;
+  text-align: center;
+  border-bottom: 4px solid #E67E22;
+}
+header img {
+  height: 70px;
+}
+.company-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin-top: 5px;
+}
+
+/* Tabs styles */
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin: 30px 0 20px;
+  padding: 10px 0;
+  border-bottom: 2px solid #E67E22;
+  background: #fff;
+}
+.tab {
+  padding: 12px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  background: #000;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.tab:hover {
+  background: #E67E22;
+}
+.tab.active {
+  background: #228B22;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.subsection {
+  margin-bottom: 30px;
+}
+.subsection h3 {
+  color: #228B22;
+  border-bottom: 2px solid #E67E22;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.subsection ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.subsection img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.cta-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+.cta-buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  background: #228B22;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.cta-buttons a:hover {
+  background: #1e7a1e;
+}
+
+/* FOOTER */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+footer a {
+  color: #E67E22;
+}
+
+@media (max-width: 600px) {
+  .tab {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .cta-buttons a {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+  </style> 
+  <script>
+    function openTab(evt, tabName) {
+      const contents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.remove("active");
+      }
+      const tabs = document.getElementsByClassName("tab");
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }window.onload = function () {
+  document.getElementsByClassName("tab")[0].click();
+}
+
+  </script> 
+ </head> 
+ <body> 
+  <header> 
+   <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo"> 
+   <div class="company-name">
+     Chayim International Group 
+   </div> 
+  </header> 
+  <div class="container"> 
+   <h2>Services &amp; Solutions</h2> 
+   <div class="tabs"> 
+    <div class="tab" onclick="openTab(event, 'residential')">
+     Residential
+    </div> 
+    <div class="tab" onclick="openTab(event, 'commercial')">
+     Commercial
+    </div> 
+    <div class="tab" onclick="openTab(event, 'financing')">
+     Financing &amp; BnB
+    </div> 
+    <div class="tab" onclick="openTab(event, 'sustainability')">
+     Green Tech
+    </div> 
+   </div> 
+   <div id="residential" class="tab-content"> 
+    <div class="subsection"> 
+     <img src="https://i.postimg.cc/qRLJ4ZLv/IMG-20250411-WA0003.jpg" alt="Residential Image"> 
+     <h3>Residential Development</h3> 
+     <p>We offer a wide range of housing solutions tailored to different budgets and lifestyles. From affordable starter homes to high-end luxury residences, all our developments feature exceptional craftsmanship and thoughtful design. We provide safe, gated communities complete with modern amenities, green spaces, and access to key infrastructure like schools and hospitals. Our goal is to make home ownership a reality for more people, supported by innovative rent-to-own and 100% mortgage-backed financing options.</p> 
+     <ul> 
+      <li>Affordable, mid-range, and luxury apartment options</li> 
+      <li>Master-planned gated communities with amenities</li> 
+      <li>Flexible home ownership plans and support systems</li> 
+     </ul> 
+     <div class="cta-buttons"> <a href="contact.html">Contact Us</a>
+     </div> 
+    </div> 
+   </div> 
+   <div id="commercial" class="tab-content"> 
+    <div class="subsection"> 
+     <img src="https://i.postimg.cc/bYxb2z6Z/bd427dfdfe9fbc6996cd8f00545d2052.jpg" alt="Commercial Image"> 
+     <h3>Commercial Property Development</h3> 
+     <p>We design, construct, and manage forward-thinking commercial spaces that meet the growing demands of business. Whether it's office complexes, retail spaces, or mixed-use environments, we apply cutting-edge architectural practices that combine energy efficiency with visual appeal. Our commercial projects prioritize flexibility and technology to support a wide variety of tenants and business functions.</p> 
+     <ul> 
+      <li>Office buildings and business hubs</li> 
+      <li>Retail complexes and commercial centers</li> 
+      <li>Energy-efficient, smart infrastructure</li> 
+     </ul> 
+     <div class="cta-buttons"> <a href="contact.html">Contact Us</a>
+     </div> 
+    </div> 
+   </div> 
+   <div id="financing" class="tab-content"> 
+    <div class="subsection"> 
+     <img src="https://i.postimg.cc/FFD6gxqX/3c1107f065df8c84ef7a4c9edda229a4.jpg" alt="Financing and BnB Image"> 
+     <h3>Financing &amp; Buy and Build (BnB)</h3> 
+     <p>Our BnB model is a streamlined path to homeownership: pick your plot, select a design, and access 100% financing. From land sourcing and architecture to construction and documentation, we guide clients through every phase. We partner with banks and financial institutions to offer long-term repayment plans with low interest rates and a focus on affordability for all income levels.</p> 
+     <ul> 
+      <li>Step-by-step ownership journey from land to key</li> 
+      <li>Custom and pre-designed architectural options</li> 
+      <li>Flexible mortgage packages with 10–25 year terms</li> 
+     </ul> 
+     <div class="cta-buttons"> <a href="contact.html">Contact Us</a>
+     </div> 
+    </div> 
+   </div> 
+   <div id="sustainability" class="tab-content"> 
+    <div class="subsection"> 
+     <img src="https://i.postimg.cc/X75P5BRw/ad96916d8789937e9391095ad0d2a14f.jpg" alt="Green Tech Image"> 
+     <h3>Green Technology &amp; Sustainability</h3> 
+     <p>We're leading the way in sustainable property development. Our designs integrate smart technology and eco-conscious features to reduce environmental impact while increasing long-term value. We incorporate rainwater harvesting, solar power, and energy-saving materials across our projects. Our Chayim Kitchen Gardens offer food sustainability in urban settings—supporting wellness, biodiversity, and community resilience.</p> 
+     <ul> 
+      <li>Smart, solar-powered, and energy-efficient designs</li> 
+      <li>Eco-friendly building materials and methods</li> 
+      <li>Community-based kitchen gardens and wellness programs</li> 
+     </ul> 
+     <div class="cta-buttons"> <a href="contact.html">Contact Us</a>
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <footer> 
+   <p>© 2025 Chayim International Group. All rights reserved.</p> 
+   <p>Park Suites, 5th Floor, Parklands, Nairobi, Kenya | +254 728 915 725</p> 
+   <p>Email: info.chayim@gmail.com | <a href="http://www.chayim.co.ke">www.chayim.co.ke</a></p> 
+  </footer> 
+ </body>
+</html>
