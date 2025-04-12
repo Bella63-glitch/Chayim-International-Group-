@@ -15,7 +15,13 @@
         font-family: Arial, sans-serif;
         color: #000;
         line-height: 1.5;
-        background: #fff;
+        /* Background image covers the entire page and stays fixed for clarity */
+        background: url("https://i.postimg.cc/RZtMk54z/fc4dc01de023850cff0a2e6088c06959.jpg") no-repeat center center fixed;
+        background-size: cover;
+        /* These properties help ensure the background image is rendered clearly */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
       }
       a {
         text-decoration: none;
@@ -25,17 +31,33 @@
       a:hover {
         color: #E67E22;
       }
-      /* Fade-in animation */
+      /* Fade-in animation for sections */
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      /* Apply #E67E22 outline and rounded corners to all section elements */
+      /* Slide-in animation for hero text */
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Glow animation for text */
+      @keyframes glow {
+        from { text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+        to { text-shadow: 0 0 20px rgba(255,255,255,1); }
+      }
+      /* Slide in from left for grid items */
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      /* Apply orange outline and rounded corners to all section elements */
       section {
         border: 2px solid #E67E22;
         border-radius: 15px;
         margin: 20px 0;
         animation: fadeIn 1s ease-out;
+        background: #fff;
       }
       /* HEADER */
       header {
@@ -50,6 +72,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-direction: row;
       }
       .logo {
         display: flex;
@@ -60,41 +83,44 @@
         margin-right: 10px;
       }
       .logo h1 {
-        font-size: 24px;
+        font-size: 18px;
         color: #E67E22;
         font-weight: bold;
       }
+      /* Dropdown Menu Styling - menu button in orange */
       .dropdown-menu {
         position: relative;
       }
       .dropdown-btn {
-        background: none;
+        background: #E67E22;
         border: none;
         font-size: 16px;
         cursor: pointer;
-        color: #381C28;
+        color: #fff;
+        border-radius: 5px;
+        padding: 8px 12px;
       }
       .dropdown-btn:hover {
-        color: #E67E22;
+        background: #cf6a1f;
       }
       .dropdown-content {
         display: none;
         position: absolute;
         right: 0;
         top: 100%;
-        background: #fff;
+        background: #000;
         min-width: 150px;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
         z-index: 99;
       }
       .dropdown-content a {
         display: block;
         padding: 10px 15px;
-        color: #000;
+        color: #fff;
       }
       .dropdown-content a:hover {
-        background: #f2f2f2;
-        color: #E67E22;
+        background: #333;
       }
       .dropdown-menu:hover .dropdown-content {
         display: block;
@@ -133,36 +159,42 @@
       .hero-text h2 {
         font-size: 36px;
         margin-bottom: 15px;
+        animation: slideIn 2s ease forwards, glow 1.5s ease-in-out infinite alternate;
       }
       .hero-text p {
         font-size: 18px;
         margin-bottom: 20px;
+        animation: slideIn 2.5s ease forwards, glow 1.5s ease-in-out infinite alternate;
+      }
+      .hero-text .btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
       }
       .hero-text button {
-        background: #E67E22;
+        background: #228B22;
         color: #fff;
-        border: none;
+        border: 2px solid #fff;
+        border-radius: 8px;
         padding: 12px 20px;
         font-size: 16px;
         cursor: pointer;
-        border-radius: 5px;
-        transition: background 0.3s ease;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
       }
       .hero-text button:hover {
-        background: #cf6a1f;
+        background: #1e7a1e;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
       }
       /* ABOUT US SECTION */
       .about-us {
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        background: #f5f5f5;
-        border-radius: 15px;
         text-align: center;
       }
       .about-us img {
         max-width: 150px;
-        opacity: 0.5;
+        opacity: 0.8;
         margin-bottom: 20px;
       }
       .about-us h3 {
@@ -182,8 +214,6 @@
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        background: #f5f5f5;
-        border-radius: 15px;
         overflow: hidden;
         animation: fadeIn 1s ease-out;
       }
@@ -214,7 +244,6 @@
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
-      /* Gallery styling for multiple images */
       .property-images {
         display: flex;
         overflow-x: auto;
@@ -247,7 +276,6 @@
         color: #333;
         font-weight: bold;
       }
-      /* Slider buttons for featured properties */
       .featured-btn {
         position: absolute;
         top: 50%;
@@ -273,8 +301,6 @@
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
-        background: #f5f5f5;
-        border-radius: 15px;
         animation: fadeIn 1s ease-out;
       }
       .grid-column {
@@ -285,7 +311,7 @@
         border-radius: 15px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         background: #fff;
-        animation: fadeIn 1s ease-out;
+        animation: slideInLeft 1s ease-out forwards;
       }
       .grid-column h4 {
         font-size: 20px;
@@ -302,8 +328,6 @@
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        background: #f5f5f5;
-        border-radius: 15px;
         animation: fadeIn 1s ease-out;
       }
       .faq-section h3 {
@@ -336,8 +360,6 @@
         max-width: 1200px;
         margin: 40px auto;
         padding: 20px;
-        background: #f5f5f5;
-        border-radius: 15px;
         animation: fadeIn 1s ease-out;
       }
       .testimonials h3 {
@@ -388,13 +410,14 @@
       .test-next { right: 15px; }
       /* FOOTER */
       footer {
-        background: #E67E22;
-        color: #fff;
-        text-align: center;
+        max-width: 1200px;
+        margin: 40px auto;
         padding: 20px;
-        margin-top: 40px;
+        background: green;
         border-radius: 15px;
+        text-align: center;
         animation: fadeIn 1s ease-out;
+        color: #fff;
       }
       footer p {
         margin-bottom: 5px;
@@ -408,11 +431,11 @@
       }
       @media(max-width: 600px) {
         .nav-container {
-          flex-direction: column;
-          align-items: flex-start;
+          flex-direction: row;
+          align-items: center;
         }
         .logo h1 {
-          margin-bottom: 10px;
+          margin-bottom: 0;
         }
         .grid-column, .testimonial-slide {
           flex: 1 1 100%;
@@ -571,15 +594,18 @@
   </header> 
   <!-- HERO SECTION WITH VIDEO --> 
   <div class="hero"> 
-   <video autoplay controls muted loop playsinline> 
-    <source src="https://ia801501.us.archive.org/3/items/vid-20250411-121541/VID_20250411_121541.mp4" type="video/mp4"> 
-    Your browser does not support the video tag. 
+   <video autoplay muted loop playsinline>
+    <source src="https://ia801501.us.archive.org/3/items/vid-20250411-121541/VID_20250411_121541.mp4" type="video/mp4">
+    Your browser does not support the video tag.
    </video> 
    <div class="hero-overlay"></div> 
    <div class="hero-text"> 
     <h2>Dreams to Life</h2> 
     <p>Transforming sustainable housing dreams into reality.</p> 
-    <button>Explore Our Projects</button> 
+    <div class="btn-group">
+      <button>Properties</button>
+      <button>Get in Touch</button>
+    </div>
    </div> 
   </div> 
   <!-- ABOUT US SECTION --> 
