@@ -397,6 +397,13 @@
         color: #000;
         line-height: 1.5;
       }
+      /* Mobile friendly adjustments for grid-section */
+      @media only screen and (max-width: 768px) {
+        .grid-column {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
       /* FAQ SECTION */
       .faq-section {
         max-width: 1200px;
@@ -495,29 +502,6 @@
       }
       footer p {
         margin-bottom: 5px;
-      }
-      /* Responsive Styles */
-      @media(max-width: 992px) {
-        .grid-column, .testimonial-slide {
-          flex: 1 1 calc(50% - 40px);
-          max-width: calc(50% - 40px);
-        }
-      }
-      @media(max-width: 600px) {
-        .nav-container {
-          flex-direction: row;
-          align-items: center;
-        }
-        .logo h1 {
-          margin-bottom: 0;
-        }
-        .grid-column, .testimonial-slide {
-          flex: 1 1 100%;
-          max-width: 100%;
-        }
-        .hero-text h2 {
-          font-size: 28px;
-        }
       }
     </style> 
   <script>
@@ -668,19 +652,27 @@
       };
     </script> 
  </head> 
- <body> <!-- HEADER --> 
+ <body>
+  <!-- HEADER --> 
   <header> 
    <div class="nav-container"> 
     <div class="logo"> 
      <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo"> 
      <h1>Chayim International Group</h1> 
     </div> 
-    <div class="dropdown-menu"> <button class="dropdown-btn">Menu</button> 
-     <div class="dropdown-content"> <a href="#">Home</a> <a href="#">Listings</a> <a href="#">Financing</a> <a href="#">Contact</a> 
-     </div> 
+    <div class="dropdown-menu"> 
+      <button class="dropdown-btn">Menu</button> 
+      <div class="dropdown-content"> 
+        <a href="property-listings.html">Property</a> 
+        <a href="about-us.html">About Us</a> 
+        <a href="services.html">Services</a> 
+        <a href="Innovation.html">Innovations</a> 
+        <a href="contact.html">Contact Us</a> 
+      </div> 
     </div> 
    </div> 
-  </header> <!-- HERO SECTION WITH VIDEO --> 
+  </header> 
+  <!-- HERO SECTION WITH VIDEO --> 
   <div class="hero"> 
    <video autoplay muted loop playsinline preload="auto"> 
     <source src="https://ia801501.us.archive.org/3/items/vid-20250411-121541/VID_20250411_121541.mp4" type="video/mp4"> Your browser does not support the video tag. 
@@ -689,15 +681,20 @@
    <div class="hero-text"> 
     <h2>Dreams to Life</h2> 
     <p>Transforming sustainable housing dreams into reality.</p> 
-    <div class="btn-group"> <button>Properties</button> <button>Get in Touch</button> 
+    <div class="btn-group"> 
+      <a href="property-listings.html"><button>Properties</button></a> 
+      <a href="https://wa.me/254728915725"><button>Get in Touch</button></a> 
     </div> 
    </div> 
-  </div> <!-- ABOUT US SECTION --> 
+  </div> 
+  <!-- ABOUT US SECTION --> 
   <section class="about-us"> 
    <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo"> 
    <h3>About Us</h3> 
-   <p> Chayim International Group is a premier property developer specializing in fully financed, mortgage-based solutions that turn dreams into reality. We design exceptional residential and commercial projects with sustainability at their core. </p> <a href="about.html" class="learn-more">Learn More</a> 
-  </section> <!-- SERVICES SLIDER SECTION --> 
+   <p> Chayim International Group is a premier property developer specializing in fully financed, mortgage-based solutions that turn dreams into reality. We design exceptional residential and commercial projects with sustainability at their core. </p> 
+   <a href="about-us.html" class="learn-more">Learn More</a> 
+  </section> 
+  <!-- SERVICES SLIDER SECTION --> 
   <section class="services-slider"> 
    <h3>Our Services</h3> 
    <div class="services-container"> 
@@ -717,13 +714,21 @@
      <h4>Sustainable Designs</h4> 
      <p>Eco-friendly, cost-efficient practices.</p> 
     </div> 
-   </div> <a href="services.html" class="view-services">View Services</a> <button class="services-btn services-prev" onclick="prevService()">❮</button> <button class="services-btn services-next" onclick="nextService()">❯</button> 
-  </section> <!-- FEATURED PROPERTIES SECTION (SLIDESHOW) --> 
+   </div> 
+   <a href="services.html" class="view-services">View Services</a> 
+   <button class="services-btn services-prev" onclick="prevService()">❮</button> 
+   <button class="services-btn services-next" onclick="nextService()">❯</button> 
+  </section> 
+  <!-- FEATURED PROPERTIES SECTION (SLIDESHOW) --> 
   <section class="featured-properties"> 
    <h3>Featured Property Listings</h3> 
-   <div class="featured-properties-container"> <!-- Property cards will be dynamically inserted here --> 
-   </div> <button class="featured-btn featured-prev" onclick="prevProperty()">❮</button> <button class="featured-btn featured-next" onclick="nextProperty()">❯</button> 
-  </section> <!-- GRID SECTION: VISION | MISSION | SLOGAN --> 
+   <div class="featured-properties-container"> 
+     <!-- Property cards will be dynamically inserted here --> 
+   </div> 
+   <button class="featured-btn featured-prev" onclick="prevProperty()">❮</button> 
+   <button class="featured-btn featured-next" onclick="nextProperty()">❯</button> 
+  </section> 
+  <!-- GRID SECTION: VISION | MISSION | SLOGAN --> 
   <section class="grid-section"> 
    <div class="grid-column"> 
     <h4>Our Vision</h4> 
@@ -737,7 +742,8 @@
     <h4>Our Slogan</h4> 
     <p>"Dreams to Life." We believe everyone deserves the opportunity to own a home or business property, and we make these dreams a reality through innovative, sustainable financing models.</p> 
    </div> 
-  </section> <!-- FAQ SECTION --> 
+  </section> 
+  <!-- FAQ SECTION --> 
   <section class="faq-section"> 
    <h3>Frequently Asked Questions</h3> 
    <div class="faq-item"> 
@@ -751,7 +757,7 @@
    <div class="faq-item"> 
     <h4 onclick="toggleFaq(this)">How do you incorporate sustainability in your projects?</h4> 
     <p>Our developments integrate green technologies such as solar panels, rainwater harvesting, energy-efficient designs, and smart sensors to ensure lower long-term costs and a reduced environmental footprint.</p> 
-   </div> <!-- Additional FAQs --> 
+   </div> 
    <div class="faq-item"> 
     <h4 onclick="toggleFaq(this)">What green technology initiatives do you implement?</h4> 
     <p>We integrate advanced green solutions including urban farming via Chayim Kitchen Gardens, solar power integration, energy-saving building designs, and rainwater harvesting systems that promote sustainability.</p> 
@@ -768,10 +774,12 @@
     <h4 onclick="toggleFaq(this)">What markets do you serve?</h4> 
     <p>Our operations span local and international markets, developing projects across Kenya and beyond, adapting to diverse customer needs globally.</p> 
    </div> 
-  </section> <!-- TESTIMONIALS SECTION --> 
+  </section> 
+  <!-- TESTIMONIALS SECTION --> 
   <section class="testimonials"> 
    <h3>What Our Clients Say</h3> 
-   <div class="testimonial-slider"> <button class="testimonial-btn test-prev" onclick="prevTestimonial()">❮</button> 
+   <div class="testimonial-slider"> 
+    <button class="testimonial-btn test-prev" onclick="prevTestimonial()">❮</button> 
     <div class="testimonial-slides"> 
      <div class="testimonial-slide"> 
       <p>"Chayim International Group made my dream of owning a home a reality. Their innovative financing and commitment to sustainability truly set them apart."</p> 
@@ -785,27 +793,18 @@
       <p>"The quality of construction and the eco-friendly approach is unmatched. I highly recommend Chayim International Group."</p> 
       <h5>- Juma Wanjiku</h5> 
      </div> 
-    </div> <button class="testimonial-btn test-next" onclick="nextTestimonial()">❯</button> 
+    </div> 
+    <button class="testimonial-btn test-next" onclick="nextTestimonial()">❯</button> 
    </div> 
-  </section> <!-- FOOTER --> 
+  </section> 
+  <!-- FOOTER --> 
   <footer> 
    <p>© 2025 Chayim International Group. All rights reserved.</p> 
    <p>Office: Park Suites, 5th Floor, Parklands, Nairobi, Kenya | Phone: +254 728 915 725</p> 
    <p>Email: info.chayim@gmail.com | Website: <a href="http://www.chayim.co.ke" style="color:#fff;">www.chayim.co.ke</a></p> 
   </footer> 
  </body>
- </html> 
-
-
-
-
-
-
-
-
-
-
-
+</html>
 
 
 
