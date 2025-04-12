@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sustainability &amp; Innovation | Chayim International Group</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      color: #333;
+      background: url('https://i.postimg.cc/prccfc4s/3aed71d3020b887325b02ea94bbf421c.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 3px solid #E67E22;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    header h1 {
+      font-size: 20px;
+      color: #228B22;
+    }
+    /* Ensure the menu is pushed to the right */
+    .menu {
+      margin-left: auto;
+      position: relative;
+    }
+    .menu-btn {
+      background: #E67E22;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .menu-content {
+      display: none; /* Hidden by default; toggled via click on mobile */
+      position: absolute;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      margin-top: 10px;
+      z-index: 99;
+    }
+    .menu-content a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+    .menu-content a:hover {
+      background: #f2f2f2;
+      color: #E67E22;
+    }
+    /* For desktop, show menu on hover */
+    @media (min-width: 769px) {
+      .menu:hover .menu-content {
+        display: block;
+      }
+    }
+    
+    section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      color: #228B22;
+    }
+    .icon-row, .impact-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .icon-card, .stat-box {
+      flex: 1 1 250px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-left: 5px solid #E67E22;
+      border-radius: 8px;
+    }
+    .stat-box {
+      text-align: center;
+      background: #e7f8e9;
+      border: 1px solid #c1e4c5;
+    }
+    .stat-box h3 {
+      font-size: 32px;
+      color: #228B22;
+      margin: 0;
+    }
+    .stat-box p {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    footer {
+      text-align: center;
+      background: rgba(34, 139, 34, 0.95);
+      color: #fff;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .icon-row, .impact-stats {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header, section, footer {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Logo">
+      <h1>Chayim International Group</h1>
+    </div>
+    <div class="menu">
+      <button class="menu-btn" id="menu-btn">Menu</button>
+      <div class="menu-content" id="menu-content">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="services.html">Services</a>
+        <a href="innovation.html">Innovation</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Sustainability &amp; Innovation – Driving Impact</h2>
+    <p>Our commitment to a greener, smarter future drives every project we build.</p>
+  </section>
+
+  <section>
+    <h3>1. Green Technology Initiatives</h3>
+    <div class="icon-row">
+      <div class="icon-card">
+        <h4>Chayim Kitchen Gardens</h4>
+        <p>Integrated into affordable housing, supporting SDG 2 &amp; 11:</p>
+        <ul>
+          <li>Access to fresh produce</li>
+          <li>Lower food costs &amp; carbon footprint</li>
+          <li>Enhanced community well-being</li>
+        </ul>
+      </div>
+      <div class="icon-card">
+        <h4>Sustainable Construction</h4>
+        <p>Our practices include:</p>
+        <ul>
+          <li>Solar panel integration</li>
+          <li>Smart irrigation &amp; water reuse</li>
+          <li>Eco-materials &amp; passive cooling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>2. Environmental Impact</h3>
+    <p>We track and optimize our environmental impact across all projects.</p>
+    <div class="impact-stats">
+      <div class="stat-box">
+        <h3 class="counter" data-target="42">0</h3>
+        <p>% reduction in energy use</p>
+      </div>
+      <div class="stat-box">
+        <h3 class="counter" data-target="78000">0</h3>
+        <p>Liters of water saved monthly</p>
+      </div>
+      <div class="stat-box">
+        <h3 class="counter" data-target="110">0</h3>
+        <p>Tonnes carbon offset annually</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>3. Partnerships for a Greener Future</h3>
+    <p>Our collaborations with leaders like <strong>OPDA Investment (Portugal)</strong> drive sustainable innovation and cost-efficiency.</p>
+    <h4>Certifications &amp; Standards</h4>
+    <ul>
+      <li>EDGE (Excellence in Design for Greater Efficiencies)</li>
+      <li>LEED-aligned principles</li>
+      <li>Local green building compliance</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Chayim International Group. All rights reserved.</p>
+    <p>Park Suites, 5th Floor, Parklands, Nairobi, Kenya | +254 728 915 725</p>
+    <p>Email: <a href="mailto:info.chayim@gmail.com">info.chayim@gmail.com</a> | Website: <a href="http://www.chayim.co.ke">www.chayim.co.ke</a></p>
+  </footer>
+
+  <script>
+    // Toggle menu for mobile devices
+    const menuBtn = document.getElementById('menu-btn');
+    const menuContent = document.getElementById('menu-content');
+    menuBtn.addEventListener('click', () => {
+      if (menuContent.style.display === 'block') {
+        menuContent.style.display = 'none';
+      } else {
+        menuContent.style.display = 'block';
+      }
+    });
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const speed = 150;
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(updateCount, 30);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      const handleScroll = () => {
+        const rect = counter.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          updateCount();
+          window.removeEventListener('scroll', handleScroll);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+    });
+  </script>
+
+</body></html>
