@@ -4,7 +4,7 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Contact Us | Chayim International Group</title> 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -87,17 +87,17 @@
  </head> 
  <body> 
   <header> 
-   <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Logo"> 
+   <img src="https://i.postimg.cc/Hkr7dQ7h/ei-1746659866318-removebg-preview.png" alt="Logo"> 
    <h1>Chayim International Group</h1> 
   </header> 
   <div class="container"> 
    <h2>Contact Us</h2> 
    <p>Have a question or ready to make your dream home a reality? Reach out and let’s talk.</p> 
    <div class="contact-info"> 
-    <h3>Office Address</h3> 
-    <p>Park Suites, 5th Floor,<br>Parklands, Nairobi, Kenya</p> 
+    <h3>Office Location</h3> 
+    <p>Park Suites, 5th Floor Suite 13<br>Along 44 Parklands Road, Nairobi, Kenya</p> 
     <h3>Phone</h3> 
-    <p><a href="tel:+254728915725">+254 728 915 725</a></p> 
+    <p><a href="tel:+254700820080">0700 820 080</a></p> 
     <h3>Email</h3> 
     <p><a href="mailto:info.chayim@gmail.com">info.chayim@gmail.com</a></p> 
     <h3>Website</h3> 
@@ -108,7 +108,9 @@
     <form id="whatsapp-form"> 
      <input type="text" name="name" placeholder="Your Name" required> 
      <input type="email" name="email" placeholder="Your Email" required> 
-     <input type="text" name="subject" placeholder="Subject" required> <textarea name="message" rows="6" placeholder="Your Message" required></textarea> <button type="submit">Send Message</button> 
+     <input type="text" name="subject" placeholder="Subject" required> 
+     <textarea name="message" rows="6" placeholder="Your Message" required></textarea> 
+     <button type="submit">Send Message</button> 
     </form> 
    </div> 
   </div> 
@@ -125,12 +127,18 @@
       const subject = document.querySelector('[name="subject"]').value;
       const message = document.querySelector('[name="message"]').value;
 
-      const phone = "254728915725";
+      const phone = "254700820080";
       const text = `Hello, my name is ${name}.\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
       window.open(url, "_blank");
     });
   </script> 
- 
-</body></html>
+ </body>
+</html>
+
+
+
+
+
+
