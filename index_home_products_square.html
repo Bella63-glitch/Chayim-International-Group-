@@ -1,0 +1,809 @@
+<!doctype html>
+
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+  <title>Chayim International Group | Dreams to Life</title> 
+  <style>
+      /* GENERAL & BACKGROUND */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        color: #000;
+        line-height: 1.5;
+        background: url("https://i.postimg.cc/RZtMk54z/fc4dc01de023850cff0a2e6088c06959.jpg") no-repeat center center fixed;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.3s ease;
+      }
+      a:hover {
+        color: #E67E22;
+      }
+      /* Basic fade in for sections */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Slide in animation for hero text */
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Apply orange outline and rounded corners to all section elements */
+      section {
+        border: 2px solid #E67E22;
+        border-radius: 15px;
+        margin: 20px 0;
+        animation: fadeIn 0.8s ease-out;
+        background: #fff;
+      }
+      /* HEADER */
+      header {
+        width: 100%;
+        background: #f5f5f5;
+        border-bottom: 1px solid #ccc;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+      .logo img {
+        height: 50px;
+        margin-right: 10px;
+      }
+      .logo h1 {
+        font-size: 18px;
+        color: #E67E22;
+        font-weight: bold;
+      }
+      /* Dropdown Menu Styling */
+      .dropdown-menu {
+        position: relative;
+      }
+      .dropdown-btn {
+        background: #E67E22;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 5px;
+        padding: 8px 12px;
+      }
+      .dropdown-btn:hover {
+        background: #cf6a1f;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background: #000;
+        min-width: 150px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 99;
+      }
+      .dropdown-content a {
+        display: block;
+        padding: 10px 15px;
+        color: #fff;
+      }
+      .dropdown-content a:hover {
+        background: #333;
+      }
+      .dropdown-menu:hover .dropdown-content {
+        display: block;
+      }
+      /* HERO SECTION WITH VIDEO */
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        overflow: hidden;
+        background: #000;
+      }
+      .hero video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        preload: auto;
+      }
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+      }
+      .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+        z-index: 2;
+      }
+      .hero-text h2 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        animation: slideIn 1.5s ease forwards;
+      }
+      .hero-text p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        animation: slideIn 2s ease forwards;
+      }
+      .hero-text .btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+      .hero-text button {
+        background: #228B22;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hero-text button:hover {
+        background: #1e7a1e;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      }
+      /* ABOUT US SECTION */
+      .about-us {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        text-align: center;
+      }
+      .about-us img {
+        max-width: 150px;
+        opacity: 0.8;
+        margin-bottom: 20px;
+      }
+      .about-us h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #381C28;
+      }
+      .about-us p {
+        font-size: 16px;
+        color: #000;
+        line-height: 1.6;
+        text-align: justify;
+      }
+      .about-us .learn-more {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #000;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+      }
+      .about-us .learn-more:hover {
+        background: #333;
+      }
+      /* SERVICES SLIDER SECTION */
+      .services-slider {
+        position: relative;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        overflow: hidden;
+        animation: fadeIn 0.8s ease-out;
+        text-align: center;
+      }
+      .services-slider h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #381C28;
+      }
+      .services-container {
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+        transition: transform 0.5s ease;
+        margin-bottom: 20px;
+        width: max-content;
+      }
+      .service-card {
+        background: #fff;
+        border: 2px solid #228B22;
+        border-radius: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        flex-shrink: 0;
+        min-width: 300px;
+        justify-content: center;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-card h4 {
+        font-size: 20px;
+        color: #228B22;
+        margin-bottom: 10px;
+      }
+      .service-card p {
+        font-size: 16px;
+        color: #000;
+      }
+      .services-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 3;
+      }
+      .services-btn:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .services-prev { left: 15px; }
+      .services-next { right: 15px; }
+      .services-slider .view-services {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #228B22;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+      }
+      .services-slider .view-services:hover {
+        background: #1e7a1e;
+      }
+      /* FEATURED PROPERTIES SECTION (SLIDESHOW) */ 
+      .featured-properties {
+        position: relative;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        overflow: hidden;
+        animation: fadeIn 0.8s ease-out;
+      }
+      .featured-properties h3 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #381C28;
+      }
+      .featured-properties-container {
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+        transition: transform 0.5s ease;
+        width: max-content;
+      }
+      .property-card {
+        background: #fff;
+        border: 2px solid #228B22;
+        border-radius: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        flex-shrink: 0;
+        min-width: 300px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .property-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .property-images {
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
+        padding: 10px;
+        background: #f9f9f9;
+      }
+      .property-images img {
+        height: 150px;
+        object-fit: cover;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .property-info {
+        padding: 15px;
+        text-align: center;
+      }
+      .property-info h4 {
+        font-size: 20px;
+        color: #228B22;
+        margin-bottom: 10px;
+      }
+      .property-info p {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 8px;
+      }
+      .property-info .price {
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+      }
+      .featured-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 3;
+      }
+      .featured-btn:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .featured-prev { left: 15px; }
+      .featured-next { right: 15px; }
+      /* GRID SECTION: VISION | MISSION | SLOGAN */
+      .grid-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        animation: fadeIn 0.8s ease-out;
+      }
+      .grid-column {
+        flex: 1 1 calc(33.333% - 40px);
+        max-width: calc(33.333% - 40px);
+        padding: 20px;
+        border: 2px solid #228B22;
+        border-radius: 15px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        animation: slideIn 0.8s ease-out forwards;
+      }
+      .grid-column h4 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: #228B22;
+      }
+      .grid-column p {
+        font-size: 15px;
+        color: #000;
+        line-height: 1.5;
+      }
+      /* Mobile friendly adjustments for grid-section */
+      @media only screen and (max-width: 768px) {
+        .grid-column {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+      /* FAQ SECTION */
+      .faq-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        animation: fadeIn 0.8s ease-out;
+      }
+      .faq-section h3 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #381C28;
+      }
+      .faq-item {
+        margin: 20px 0;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+      }
+      .faq-item h4 {
+        font-size: 18px;
+        color: #228B22;
+        cursor: pointer;
+      }
+      .faq-item p {
+        font-size: 15px;
+        color: #555;
+        margin-top: 10px;
+        display: none;
+      }
+      .faq-item.active p {
+        display: block;
+      }
+      /* TESTIMONIALS SECTION */
+      .testimonials {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        animation: fadeIn 0.8s ease-out;
+      }
+      .testimonials h3 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #381C28;
+      }
+      .testimonial-slider {
+        position: relative;
+        overflow: hidden;
+      }
+      .testimonial-slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+      .testimonial-slide {
+        min-width: 100%;
+        text-align: center;
+        padding: 20px;
+      }
+      .testimonial-slide p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+        font-style: italic;
+      }
+      .testimonial-slide h5 {
+        font-size: 16px;
+        color: #228B22;
+      }
+      .testimonial-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 3;
+      }
+      .testimonial-btn:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .test-prev { left: 15px; }
+      .test-next { right: 15px; }
+      /* FOOTER */
+      footer {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #E67E22;
+        border-radius: 15px;
+        text-align: center;
+        animation: fadeIn 0.8s ease-out;
+        color: #fff;
+      }
+      footer p {
+        margin-bottom: 5px;
+      }
+    </style> 
+  
+<style>
+  .service-card {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+</style>
+<script>
+      window.onload = function() {
+        // Automatically play hero video (muted is required for autoplay)
+        const heroVideo = document.querySelector('.hero video');
+        if (heroVideo) {
+          heroVideo.play();
+        }// Retrieve featured properties and initialize properties slider.
+    async function retrieveProperties() {
+      try {
+        const url = "https://api.backendless.com/43FDF951-CA7C-4AA1-8CE5-EAEFE8AABBBB/D816E27F-267C-45B1-9932-AE452537BA0E/data/Properties?pagesize=3";
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const result = await response.json();
+        let properties = Array.isArray(result) ? result : [];
+        const container = document.querySelector('.featured-properties-container');
+        container.innerHTML = "";
+        if (!properties || properties.length === 0) {
+          properties = [{
+            title: "Sample Property",
+            description: "This sample property shows how your property card will appear.",
+            location: "Sample City, Sample Country",
+            category: "Residential",
+            Price: "$200,000",
+            imageurls: JSON.stringify(["https://via.placeholder.com/600x400?text=Sample+Image"])
+          }];
+        }
+        properties.forEach(function(prop) {
+          let imagesArray = [];
+          if (prop.imageurls) {
+            if (typeof prop.imageurls === "string") {
+              try {
+                const parsedImages = JSON.parse(prop.imageurls);
+                if (Array.isArray(parsedImages)) {
+                  imagesArray = parsedImages;
+                }
+              } catch (e) {
+                console.error("Error parsing imageurls JSON:", e);
+              }
+            } else if (Array.isArray(prop.imageurls)) {
+              imagesArray = prop.imageurls;
+            }
+          }
+          let imagesHTML = "";
+          if (imagesArray.length > 0) {
+            imagesArray.forEach(function(url) {
+              imagesHTML += `<img src="${url}" alt="${prop.title} Image">`;
+            });
+          } else {
+            imagesHTML = `<img src="https://via.placeholder.com/600x400?text=No+Image" alt="No Image">`;
+          }
+          const card = document.createElement("div");
+          card.classList.add("property-card");
+          card.innerHTML = `
+            <div class="property-images">
+              ${imagesHTML}
+            </div>
+            <div class="property-info">
+              <h4>${prop.title || "No Title"}</h4>
+              <p>${prop.description || ""}</p>
+              <p><strong>Location:</strong> ${prop.location || "N/A"}</p>
+              <p><strong>Category:</strong> ${prop.category || "N/A"}</p>
+              <p class="price"><strong>Price:</strong> ${prop.Price || "N/A"}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      }
+    }
+    retrieveProperties();
+    
+    // Services slider code.
+    let serviceIndex = 0;
+    function showService(index) {
+      const container = document.querySelector('.services-container');
+      if (!container.children.length) return;
+      const cardWidth = container.children[0].offsetWidth + 20;
+      container.style.transform = 'translateX(' + (-index * cardWidth) + 'px)';
+    }
+    window.nextService = function() {
+      const container = document.querySelector('.services-container');
+      serviceIndex++;
+      if (serviceIndex >= container.childElementCount) { serviceIndex = 0; }
+      showService(serviceIndex);
+    }
+    window.prevService = function() {
+      const container = document.querySelector('.services-container');
+      serviceIndex--;
+      if (serviceIndex < 0) { serviceIndex = container.childElementCount - 1; }
+      showService(serviceIndex);
+    }
+    
+    // Testimonials slider code.
+    let testimonialIndex = 0;
+    function showTestimonial(index) {
+      const slides = document.querySelectorAll('.testimonial-slide');
+      if (slides.length === 0) return;
+      if (index >= slides.length) testimonialIndex = 0;
+      if (index < 0) testimonialIndex = slides.length - 1;
+      document.querySelector('.testimonial-slides').style.transform =
+        'translateX(' + (-testimonialIndex * 100) + '%)';
+    }
+    window.nextTestimonial = function() {
+      testimonialIndex++;
+      showTestimonial(testimonialIndex);
+    }
+    window.prevTestimonial = function() {
+      testimonialIndex--;
+      showTestimonial(testimonialIndex);
+    }
+    setInterval(nextTestimonial, 7000);
+    
+    // Featured properties slider code.
+    let propertyIndex = 0;
+    function showProperty(index) {
+      const container = document.querySelector('.featured-properties-container');
+      if (!container.children.length) return;
+      const cardWidth = container.children[0].offsetWidth + 20;
+      container.style.transform = 'translateX(' + (-index * cardWidth) + 'px)';
+    }
+    window.nextProperty = function() {
+      const container = document.querySelector('.featured-properties-container');
+      propertyIndex++;
+      if (propertyIndex >= container.childElementCount) { propertyIndex = 0; }
+      showProperty(propertyIndex);
+    }
+    window.prevProperty = function() {
+      const container = document.querySelector('.featured-properties-container');
+      propertyIndex--;
+      if (propertyIndex < 0) { propertyIndex = container.childElementCount - 1; }
+      showProperty(propertyIndex);
+    }
+    setInterval(() => {
+      window.nextProperty();
+    }, 5000);
+    
+    // FAQ toggle function.
+    window.toggleFaq = function(element) {
+      element.parentElement.classList.toggle("active");
+    }
+  };
+</script>
+
+ </head> 
+ <body>
+  <!-- HEADER --> 
+  <header> 
+   <div class="nav-container"> 
+    <div class="logo"> 
+     <img src="https://i.postimg.cc/Hkr7dQ7h/ei-1746659866318-removebg-preview.png" alt="Chayim International Group Logo"> 
+     <h1>Chayim International Group</h1> 
+    </div> 
+    <div class="dropdown-menu"> 
+      <button class="dropdown-btn">Menu</button> 
+      <div class="dropdown-content"> 
+        <a href="about-us.html">About Us</a> 
+        <a href="services.html">Services</a> 
+        <a href="Innovation.html">Innovations</a> 
+        <a href="contact.html">Contact Us</a> 
+      </div> 
+    </div> 
+   </div> 
+  </header> 
+  <!-- HERO SECTION WITH VIDEO --> 
+  <div class="hero"> 
+   <video autoplay muted loop playsinline preload="auto"> 
+    <source src="https://ia801501.us.archive.org/3/items/vid-20250411-121541/VID_20250411_121541.mp4" type="video/mp4"> Your browser does not support the video tag. 
+   </video> 
+   <div class="hero-overlay"></div> 
+   <div class="hero-text"> 
+    <h2>Dreams to Life</h2> 
+    <p>Transforming sustainable housing dreams into reality.</p> 
+    <div class="btn-group"> 
+      <a href="https://wa.me/254700820080"><button>Get in Touch</button></a> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- ABOUT US SECTION --> 
+  <section class="about-us"> 
+   <img src="https://i.postimg.cc/Hkr7dQ7h/ei-1746659866318-removebg-preview.png" alt="Chayim International Group Logo"> 
+   <h3>About Us</h3> 
+   <p> Chayim International Group is a premier property developer specializing in fully financed, mortgage-based solutions that turn dreams into reality. We design exceptional residential and commercial projects with sustainability at their core. </p> 
+   <a href="about-us.html" class="learn-more">Learn More</a> 
+  </section> 
+  <!-- SERVICES SLIDER SECTION --> 
+  
+<section class="services-slider"> 
+  <h3>Our Products</h3> 
+  <div class="services-container" style="display: flex; gap: 20px; overflow: hidden; transition: transform 0.5s ease; width: max-content;">
+    <div class="service-card"> 
+      <h4>Jenga Kwako</h4> 
+      <p>Build your dream home with ease and flexibility.</p> 
+    </div> 
+    <div class="service-card"> 
+      <h4>BnB</h4> 
+      <p>Buy and Build solutions with full financing.</p> 
+    </div> 
+    <div class="service-card"> 
+      <h4>CIG FAIDA</h4> 
+      <p>Our client reward and loyalty program.</p> 
+    </div> 
+    <div class="service-card"> 
+      <h4>Kuwa Landlord</h4> 
+      <p>Become a landlord through affordable financing models.</p> 
+    </div>
+  </div> 
+  <button class="services-btn services-prev" onclick="prevService()">❮</button> 
+  <button class="services-btn services-next" onclick="nextService()">❯</button> 
+</section>
+ 
+  <!-- GRID SECTION: VISION | MISSION | SLOGAN --> 
+  <section class="grid-section"> 
+   <div class="grid-column"> 
+    <h4>Our Vision</h4> 
+    <p>"A catalyst for sustainable housing solutions, transforming dreams into reality."</p> 
+   </div> 
+   <div class="grid-column"> 
+    <h4>Our Mission</h4> 
+    <p>"To pioneer and transform the future of property development services by fostering innovative property solutions, unmatched customer satisfaction, and exceptional eco-friendly practices across markets."</p> 
+   </div> 
+   <div class="grid-column"> 
+    <h4>Our Slogan</h4> 
+    <p>"Dreams to Life." We believe everyone deserves the opportunity to own a home or business property, and we make these dreams a reality through innovative, sustainable financing models.</p> 
+   </div> 
+  </section> 
+  <!-- FAQ SECTION --> 
+  <section class="faq-section"> 
+   <h3>Frequently Asked Questions</h3> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">What financing options do you offer?</h4> 
+    <p>We offer fully financed, mortgage-based models including up to 100% financing with flexible terms of up to 25 years and competitive interest rates starting as low as 9.5%.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">How does the Buy and Build (BnB) model work?</h4> 
+    <p>With our Buy and Build (BnB) model, you can purchase a plot in your dream location and build your custom-designed home, all under a single, fully financed plan that eliminates large upfront payments.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">How do you incorporate sustainability in your projects?</h4> 
+    <p>Our developments integrate green technologies such as solar panels, rainwater harvesting, energy-efficient designs, and smart sensors to ensure lower long-term costs and a reduced environmental footprint.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">What green technology initiatives do you implement?</h4> 
+    <p>We integrate advanced green solutions including urban farming via Chayim Kitchen Gardens, solar power integration, energy-saving building designs, and rainwater harvesting systems that promote sustainability.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">Who are your strategic partners?</h4> 
+    <p>We partner with key industry leaders such as OPDA Investment from Portugal and various financial institutions to deliver innovative, eco-friendly, and fully financed property solutions.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">How long have you been in the property development industry?</h4> 
+    <p>Chayim International Group boasts over 15 years of experience in the property development and finance sectors.</p> 
+   </div> 
+   <div class="faq-item"> 
+    <h4 onclick="toggleFaq(this)">What markets do you serve?</h4> 
+    <p>Our operations span local and international markets, developing projects across Kenya and beyond, adapting to diverse customer needs globally.</p> 
+   </div> 
+  </section> 
+  <!-- TESTIMONIALS SECTION --> 
+  <section class="testimonials"> 
+   <h3>What Our Clients Say</h3> 
+   <div class="testimonial-slider"> 
+    <button class="testimonial-btn test-prev" onclick="prevTestimonial()">❮</button> 
+    <div class="testimonial-slides"> 
+     <div class="testimonial-slide"> 
+      <p>"Chayim International Group made my dream of owning a home a reality. Their innovative financing and commitment to sustainability truly set them apart."</p> 
+      <h5>- Mwangi Kamau</h5> 
+     </div> 
+     <div class="testimonial-slide"> 
+      <p>"Their Buy and Build model is revolutionary. I appreciate the personalized service and transparent process."</p> 
+      <h5>- Amina Odhiambo</h5> 
+     </div> 
+     <div class="testimonial-slide"> 
+      <p>"The quality of construction and the eco-friendly approach is unmatched. I highly recommend Chayim International Group."</p> 
+      <h5>- Juma Wanjiku</h5> 
+     </div> 
+    </div> 
+    <button class="testimonial-btn test-next" onclick="nextTestimonial()">❯</button> 
+   </div> 
+  </section> 
+  <!-- FOOTER --> 
+  <footer> 
+   <p>© 2025 Chayim International Group. All rights reserved.</p> 
+   <p>Office: Park Suites, 5th Floor Suite 13 along 44 parklands road Nairobi. | Phone: 0700820080</p> 
+   <p>Email: info.chayim@gmail.com | Website: <a href="http://www.chayim.co.ke" style="color:#fff;">www.chayim.co.ke</a></p> 
+  </footer> 
+ 
+</body></html>
