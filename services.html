@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"> 
- <head> 
+<head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
   <title>Services & Solutions | Chayim International Group</title> 
@@ -29,6 +29,7 @@
       padding: 20px;
       background: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      animation: fadeIn 1s ease-in-out;
     }
 
     @media (max-width: 768px) {
@@ -43,6 +44,7 @@
       padding: 20px 10px;
       text-align: center;
       border-bottom: 4px solid #E67E22;
+      animation: slideInDown 1s ease-out;
     }
     header img {
       height: 70px;
@@ -84,19 +86,25 @@
 
     .tab-content {
       display: none;
-      animation: fadeIn 0.5s ease;
+      animation: fadeIn 0.8s ease;
     }
     .tab-content.active {
       display: block;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .subsection {
       margin-bottom: 30px;
+      animation: fadeIn 1s ease;
     }
     .subsection h3 {
       color: #228B22;
@@ -115,6 +123,11 @@
       height: auto;
       margin-bottom: 15px;
       border-radius: 8px;
+      transition: transform 0.4s ease;
+    }
+
+    .subsection img:hover {
+      transform: scale(1.03);
     }
 
     .cta-buttons {
@@ -175,69 +188,85 @@
       document.getElementsByClassName("tab")[0].click();
     }
   </script> 
- </head> 
- <body> 
+</head> 
+<body> 
   <header> 
-   <img src="https://i.postimg.cc/Hkr7dQ7h/ei-1746659866318-removebg-preview.png" alt="Chayim International Group Logo"> 
-   <div class="company-name">Chayim International Group</div> 
+    <img src="https://i.postimg.cc/Hkr7dQ7h/ei-1746659866318-removebg-preview.png" alt="Chayim International Group Logo"> 
+    <div class="company-name">Chayim International Group</div> 
   </header> 
   <div class="container"> 
-   <h2>Services & Solutions</h2> 
-   <div class="tabs"> 
-    <div class="tab" onclick="openTab(event, 'residential')">Residential</div> 
-    <div class="tab" onclick="openTab(event, 'commercial')">Commercial</div> 
-   </div> 
-   
-   <div id="residential" class="tab-content"> 
-    <div class="subsection"> 
-     <img src="https://i.postimg.cc/kGWb396X/IMG-20250507-WA0013-1.jpg" alt="Residential Image"> 
-     <h3>Residential Development</h3> 
-     <p>Modern living for every budget, backed by sustainable design and flexible ownership.</p> 
-     <h4>Jenga Kwako</h4>
-     <p>Our flagship affordable housing project designed for young families, first-time homeowners, and investors looking for value. Features include customizable floor plans, quality finishes, and access to essential amenities like schools, healthcare, and transport. With flexible payment plans, Jenga Kwako empowers you to build your dream home without financial strain.</p>
-
-     <h4>BnB (Short-Stay Units)</h4>
-     <p>Fully furnished, income-generating short-term rental units tailored for both urban and tourist hotspots. Our BnB product offers homeowners a hands-free investment with professional management, guaranteed occupancy support, and market-leading returns. Ideal for clients seeking passive income through real estate.</p>
-
-     <ul>
-      <li>Affordable housing and luxury apartments</li> 
-      <li>Gated communities with secure environments</li> 
-      <li>Flexible financing and rent-to-own options</li> 
-     </ul> 
-     <div class="cta-buttons"><a href="https://wa.me/254728915725">Contact Us via WhatsApp</a></div> 
+    <h2>Services & Solutions</h2> 
+    <div class="tabs"> 
+      <div class="tab" onclick="openTab(event, 'jenga')">Jenga Kwako</div> 
+      <div class="tab" onclick="openTab(event, 'bnb')">BnB</div> 
+      <div class="tab" onclick="openTab(event, 'faida')">CIG FAIDA</div> 
+      <div class="tab" onclick="openTab(event, 'landlord')">Kuwa Landlord</div> 
     </div> 
-   </div> 
-   
-   <div id="commercial" class="tab-content"> 
-    <div class="subsection"> 
-     <img src="https://i.postimg.cc/bYxb2z6Z/bd427dfdfe9fbc6996cd8f00545d2052.jpg" alt="Commercial Image"> 
-     <h3>Commercial Development</h3> 
-     <p>Innovative spaces for business growth.</p> 
-     <h4>CIG FAIDA</h4>
-     <p>An investment platform for commercial real estate opportunities including retail shops, offices, and warehouses. CIG FAIDA enables investors to own a share of high-yield commercial properties, with options for joint ventures and fractional ownership. Designed for investors seeking stable, long-term cash flow and portfolio diversification.</p>
-
-     <h4>Kuwa Landlord</h4>
-     <p>A program designed to transition tenants into property owners. With flexible payment models, Kuwa Landlord gives individuals and SMEs the ability to lease with the option to own, turning rental payments into equity over time. This solution is perfect for businesses or families looking to stop renting and start building ownership.</p>
-
-     <ul> 
-      <li>Modern office buildings and retail centers</li> 
-      <li>Mixed-use developments for multi-purpose functionality</li> 
-      <li>Smart infrastructure and energy-efficient design</li> 
-     </ul> 
-     <div class="cta-buttons"><a href="https://wa.me/254728915725">Contact Us via WhatsApp</a></div> 
+    
+    <div id="jenga" class="tab-content"> 
+      <div class="subsection"> 
+        <img src="https://i.postimg.cc/Y0VNgbqd/IMG-20250507-WA0013-2.jpg" alt="Jenga Kwako"> 
+        <h3>Jenga Kwako</h3> 
+        <p>This targets individuals with their own plots ready for immediate development. CIG walks with them from design, financing, to construction. We specialize in building vibrant residential communities ranging from affordable housing to luxurious homes for all demographics.</p>
+        <ul>
+          <li>Personalized design and planning</li>
+          <li>Financial facilitation and advisory</li>
+          <li>Construction management and delivery</li>
+        </ul>
+        <div class="cta-buttons"><a href="https://wa.me/254728915725">Talk to Us on WhatsApp</a></div> 
+      </div> 
     </div> 
-   </div> 
-   
+    
+    <div id="bnb" class="tab-content"> 
+      <div class="subsection"> 
+        <img src="https://i.postimg.cc/tgxGZtFD/86fc291ff0334e3c527a60fa9fbfac3b.jpg" alt="BnB"> 
+        <h3>BnB (Buy and Build)</h3> 
+        <p>Turn your dream into reality—purchase land, build your ideal home, and enjoy financing support all in one place.</p>
+        <ul>
+          <li>Purchase land at your desired location</li>
+          <li>Customized home construction</li>
+          <li>Access to flexible, long-term financing</li>
+          <li>Full empowerment and seamless execution</li>
+        </ul>
+        <div class="cta-buttons"><a href="https://wa.me/254728915725">Talk to Us on WhatsApp</a></div> 
+      </div> 
+    </div> 
+    
+    <div id="faida" class="tab-content"> 
+      <div class="subsection"> 
+        <img src="https://i.postimg.cc/DZ41h1cs/c830dc19ec4247d98dbd9881c14486f7.jpg" alt="CIG FAIDA"> 
+        <h3>CIG FAIDA</h3> 
+        <p>Invest in rental properties without having to own a full block. CIG FAIDA allows you to own an income-generating unit in a professionally managed development. Enjoy passive income through consistent rental returns.</p>
+        <ul>
+          <li>Own studio to 3-bedroom units</li>
+          <li>Shared investment in prime properties</li>
+          <li>Predictable, long-term income</li>
+        </ul>
+        <div class="cta-buttons"><a href="https://wa.me/254728915725">Talk to Us on WhatsApp</a></div> 
+      </div> 
+    </div> 
+    
+    <div id="landlord" class="tab-content"> 
+      <div class="subsection"> 
+        <img src="https://i.postimg.cc/9Mk1tWLP/a819df177d8748602d1b605354fc5104.jpg" alt="Kuwa Landlord"> 
+        <h3>Kuwa Landlord</h3> 
+        <p>This program helps clients develop commercial properties by combining technical and financial support. Rent income is structured to repay the investment while owners earn steady returns.</p>
+        <ul>
+          <li>Technical and financial assistance</li>
+          <li>70/30 rent-income split for loan repayment and returns</li>
+          <li>Ideal for commercial project owners</li>
+        </ul>
+        <div class="cta-buttons"><a href="https://wa.me/254728915725">Talk to Us on WhatsApp</a></div> 
+      </div> 
+    </div> 
   </div> 
+
   <footer> 
-   <p>© 2025 Chayim International Group. All rights reserved.</p> 
-   <p>Park Suites, 5th Floor Suite 13 along 44 Parklands Road, Nairobi</p> 
-   <p>Phone: 0700820080 | Email: info.chayim@gmail.com | <a href="http://www.chayim.co.ke">www.chayim.co.ke</a></p> 
+    <p>© 2025 Chayim International Group. All rights reserved.</p> 
+    <p>Park Suites, 5th Floor Suite 13 along 44 Parklands Road, Nairobi</p> 
+    <p>Phone: 0700820080 | Email: info.chayim@gmail.com | <a href="http://www.chayim.co.ke">www.chayim.co.ke</a></p> 
   </footer> 
 </body>
 </html>
-
-
-
 
 
