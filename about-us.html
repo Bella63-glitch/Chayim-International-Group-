@@ -31,36 +31,55 @@
         margin: 0 auto;
         padding: 20px;
         background: #fff;
+        animation: fadeIn 1s ease-in;
       }
-      /* HEADER */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
       header {
         background: #fff;
         padding: 20px;
         border-bottom: 2px solid #E67E22;
         text-align: center;
+        animation: slideDown 1s ease-out;
+      }
+      @keyframes slideDown {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
       }
       header img {
         height: 60px;
         vertical-align: middle;
+        transition: transform 0.3s;
+      }
+      header img:hover {
+        transform: scale(1.1);
       }
       header h1 {
         font-size: 18px;
         margin-top: 5px;
         color: #228B22;
       }
-      /* COMPANY STORY & VALUES */
-      .company-story {
+      .company-story,
+      .team,
+      .strategic-vision {
         padding: 40px 20px;
         border-bottom: 2px solid #E67E22;
       }
-      .company-story h2 {
+      .company-story h2,
+      .team h2,
+      .strategic-vision h2 {
         text-align: center;
         margin-bottom: 20px;
+        animation: fadeIn 1s ease-in-out;
       }
-      .company-story .content {
+      .company-story .content,
+      .strategic-vision .content {
         max-width: 900px;
         margin: 0 auto;
         text-align: justify;
+        animation: fadeIn 1s ease-in;
       }
       .quote {
         font-style: italic;
@@ -68,16 +87,7 @@
         padding: 10px 20px;
         background: #f9f9f9;
         border-left: 4px solid #E67E22;
-      }
-      /* TEAM PROFILES */
-      .team {
-        padding: 40px 20px;
-        background: #f7f7f7;
-        border-bottom: 2px solid #E67E22;
-      }
-      .team h2 {
-        text-align: center;
-        margin-bottom: 20px;
+        animation: fadeIn 1.5s ease-in;
       }
       .team-members {
         display: flex;
@@ -93,10 +103,18 @@
         flex: 1 1 250px;
         max-width: 300px;
         text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeIn 1s ease-in-out;
+      }
+      .member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
       .member img {
         width: 100px;
         height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
         margin-bottom: 15px;
       }
       .member h4 {
@@ -105,25 +123,12 @@
       .member p {
         font-size: 14px;
       }
-      /* STRATEGIC VISION */
-      .strategic-vision {
-        padding: 40px 20px;
-      }
-      .strategic-vision h2 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      .strategic-vision .content {
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: justify;
-      }
-      /* FOOTER */
       footer {
         background: #228B22;
         color: #fff;
         text-align: center;
         padding: 20px;
+        animation: fadeIn 1s ease-in;
       }
       footer a {
         color: #fff;
@@ -138,7 +143,7 @@
  </head> 
  <body> 
   <header> 
-   <img src="https://i.postimg.cc/Gpkdvyb6/ei-1744405166092-removebg-preview.png" alt="Chayim International Group Logo"> 
+   <img src="https://i.postimg.cc/Hkr7dQ7h/ei-1746659866318-removebg-preview.png" alt="Chayim International Group Logo"> 
    <h1>Chayim International Group</h1> 
   </header> 
   <div class="container"> 
@@ -162,22 +167,22 @@
     <h2>Meet Our Leadership Team</h2> 
     <div class="team-members"> 
      <div class="member"> 
-      <img src="https://img.icons8.com/ios-filled/100/228B22/user-male-circle.png" alt="Dr. Kelvin Majau"> 
+      <img src="https://i.postimg.cc/5NzLj23w/IMG-20250509-WA0024.jpg" alt="Dr. Kelvin Majau"> 
       <h4>Dr. Kelvin Majau, PhD</h4> 
       <p><strong>Executive Chairman</strong><br>With over 15 years of expertise spanning accounting, finance, leadership, and psychology, Dr. Majau leads the company with a visionary approach.</p> 
      </div> 
      <div class="member"> 
-      <img src="https://img.icons8.com/ios-filled/100/228B22/user-male-circle.png" alt="Lewis Kariuki"> 
+      <img src="https://i.postimg.cc/DzRXPW7f/IMG-20250509-WA0025.jpg" alt="Lewis Kariuki"> 
       <h4>Lewis Kariuki</h4> 
       <p><strong>Chief Executive Officer</strong><br>A strategic leader with extensive experience in real estate and finance, Lewis drives growth and market expansion through customer-focused innovation.</p> 
      </div> 
      <div class="member"> 
-      <img src="https://img.icons8.com/ios-filled/100/228B22/user-female-circle.png" alt="Wangui Mwaura"> 
+      <img src="https://i.postimg.cc/qq1BQY2c/IMG-20250509-WA0026.jpg" alt="Wangui Mwaura"> 
       <h4>Wangui Mwaura</h4> 
       <p><strong>Chief Operations Officer</strong><br>With over 10 years in the industry, Wangui ensures operational excellence and smooth project delivery with a focus on sustainability.</p> 
      </div> 
      <div class="member"> 
-      <img src="https://img.icons8.com/ios-filled/100/228B22/user-female-circle.png" alt="Wambui Mwangi"> 
+      <img src="https://i.postimg.cc/br7VXY0q/IMG-20250509-WA0027-1.jpg" alt="Wambui Mwangi"> 
       <h4>Wambui Mwangi</h4> 
       <p><strong>Chief Marketing Officer</strong><br>Expert in brand strategy and digital marketing, Wambui is enhancing brand awareness and engagement across all platforms.</p> 
      </div> 
@@ -194,11 +199,17 @@
   </div> 
   <footer> 
    <p>© 2025 Chayim International Group. All rights reserved.</p> 
-   <p>Office: Park Suites, 5th Floor, Parklands, Nairobi, Kenya | Phone: +254 728 915 725</p> 
-   <p>Email: info.chayim@gmail.com | Website: <a href="http://www.chayim.co.ke">www.chayim.co.ke</a></p> 
+   <p>Office: Park Suites, 5th Floor Suite 13 along 44 Parklands Road, Nairobi, Kenya</p> 
+   <p>Phone: 0700820080 | Email: info.chayim@gmail.com | Website: <a href="http://www.chayim.co.ke">www.chayim.co.ke</a></p> 
   </footer> 
  </body>
 </html>
+
+
+
+
+
+
 
 
 
